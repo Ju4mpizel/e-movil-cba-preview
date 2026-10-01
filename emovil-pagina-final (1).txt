@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html class="dark" lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>E-MOVIL | Motos eléctricas en Cochabamba</title>
+<meta name="description" content="Motos eléctricas modernas que gastan menos y tienen la misma potencia. Visítanos en Cochabamba."/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-tint":"#81dc5a","on-surface-variant":"#bfcab5","surface-container-highest":"#353534","on-primary-container":"#1d5d00","surface-variant":"#353534","background":"#131313","primary-container":"#7ed957","inverse-surface":"#e5e2e1","surface-container-high":"#2a2a2a","surface-dim":"#131313","tertiary-container":"#46de73","on-background":"#e5e2e1","secondary-container":"#474746","inverse-primary":"#246d00","tertiary":"#67fb8d","outline":"#8a9481","secondary":"#c8c6c5","on-primary":"#0f3900","primary":"#99f670","on-surface":"#e5e2e1","surface":"#131313","outline-variant":"#404a3a","surface-container-lowest":"#0e0e0e","surface-container-low":"#1c1b1b","inverse-on-surface":"#313030","surface-bright":"#3a3939","surface-container":"#201f1f"},borderRadius:{"DEFAULT":"1rem","lg":"2rem","xl":"3rem","full":"9999px"},spacing:{"space-lg":"1.5rem","space-md":"1rem","margin-mobile":"1.25rem","margin":"3rem","space-sm":"0.5rem","space-xl":"2.5rem","space-xs":"0.25rem"},fontFamily:{"body-lg":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"headline-sm":["Space Grotesk"],"headline-md":["Space Grotesk"],"body-sm":["Plus Jakarta Sans"],"headline-lg":["Space Grotesk"],"display-xl":["Space Grotesk"],"label-caps":["Space Grotesk"],"telemetry-num":["Space Grotesk"]},fontSize:{"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"body-md":["15px",{"lineHeight":"24px","fontWeight":"400"}],"headline-sm":["20px",{"lineHeight":"28px","fontWeight":"600"}],"headline-md":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-sm":["13px",{"lineHeight":"20px","fontWeight":"400"}],"headline-lg":["40px",{"lineHeight":"48px","letterSpacing":"-0.02em","fontWeight":"600"}],"display-xl":["64px",{"lineHeight":"72px","letterSpacing":"-0.03em","fontWeight":"700"}],"label-caps":["11px",{"lineHeight":"16px","letterSpacing":"0.14em","fontWeight":"600"}]}}}}</script>
+<style>
+html{scroll-behavior:smooth}
+body{overscroll-behavior:none;overflow-x:hidden}
+::-webkit-scrollbar{width:0;height:0}
+:focus-visible{outline:2px solid #7ed957;outline-offset:3px}
+
+/* ---------- Barra de progreso + cursor ---------- */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#3c8f1f,#7ed957,#c8ffb0);z-index:100;box-shadow:0 0 12px #7ed957}
+#cursorGlow{position:fixed;top:0;left:0;width:420px;height:420px;margin:-210px 0 0 -210px;border-radius:50%;background:radial-gradient(circle,rgba(126,217,87,.14),transparent 65%);pointer-events:none;z-index:5;will-change:transform}
+
+/* ---------- Revelado al hacer scroll ---------- */
+.rv{opacity:0;transform:translateY(46px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0ms)}
+.rv.from-left{transform:translateX(-60px)}
+.rv.from-right{transform:translateX(60px)}
+.rv.zoom{transform:scale(.92)}
+.rv.in{opacity:1;transform:none}
+.mask{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em}
+.mask>span{display:inline-block;transform:translateY(112%);transition:transform 1s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0ms)}
+.in .mask>span,.mask.in>span{transform:none}
+
+/* ---------- Esferas flotantes y decoraciones ---------- */
+.sphere{position:absolute;border-radius:50%;background:radial-gradient(circle at 30% 28%,#d6ffbf 0%,#5fc13a 28%,#1f5c0e 62%,#071a03 100%);box-shadow:0 30px 60px rgba(0,0,0,.6),0 0 60px rgba(126,217,87,.18);animation:floaty 8s ease-in-out infinite;pointer-events:none}
+.sphere.dark{background:radial-gradient(circle at 30% 28%,#555 0%,#1a1a1a 55%,#050505 100%);box-shadow:0 30px 60px rgba(0,0,0,.7)}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-26px) rotate(6deg)}}
+.grain::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.dots{background-image:radial-gradient(rgba(255,255,255,.12) 1px,transparent 1px);background-size:26px 26px}
+.orbit{position:absolute;border-radius:50%;border:1px dashed rgba(126,217,87,.35);animation:spin 40s linear infinite}
+.orbit::after{content:"";position:absolute;top:-5px;left:50%;width:10px;height:10px;border-radius:50%;background:#7ed957;box-shadow:0 0 14px #7ed957}
+.orbit.rev{animation-direction:reverse;animation-duration:60s;border-style:solid;border-color:rgba(255,255,255,.07)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.glow-line{height:1px;background:linear-gradient(90deg,transparent,#7ed957,transparent);opacity:.6}
+.text-outline{-webkit-text-stroke:1.5px rgba(255,255,255,.12);color:transparent}
+
+/* ---------- Marquee ---------- */
+.marquee{display:flex;width:max-content;animation:marq 32s linear infinite}
+.marquee:hover{animation-play-state:paused}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ---------- Hero slider ---------- */
+.hs{position:absolute;inset:0;pointer-events:none}
+.hs .ghost{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%) scale(1.15);font-family:'Space Grotesk';font-weight:700;letter-spacing:-.05em;line-height:1;white-space:nowrap;font-size:clamp(130px,26vw,360px);color:rgba(255,255,255,.045);opacity:0;transition:all 1.1s cubic-bezier(.2,.8,.2,1)}
+.hs .bike{position:absolute;inset:0 0 70px 0;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateX(140px) scale(.88) rotate(2deg);transition:transform 1.1s cubic-bezier(.2,.8,.2,1),opacity .8s}
+.hs .cap>*{opacity:0;transform:translateY(24px);transition:all .8s cubic-bezier(.2,.8,.2,1)}
+.hs.is-active{pointer-events:auto}
+.hs.is-active .ghost{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.hs.is-active .bike{opacity:1;transform:none}
+.hs.is-active .cap>*{opacity:1;transform:none}
+.hs.is-active .cap>*:nth-child(1){transition-delay:.35s}
+.hs.is-active .cap>*:nth-child(2){transition-delay:.5s}
+.hs.is-active .cap>*:nth-child(3){transition-delay:.65s}
+.hs.is-active .cap>*:nth-child(4){transition-delay:.8s}
+.hs.is-out .bike{opacity:0;transform:translateX(-140px) scale(.88) rotate(-2deg)}
+.hs.is-out .ghost{opacity:0;transform:translate(-50%,-50%) scale(.9)}
+.hs .bike img{animation:bob 6s ease-in-out infinite}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -10px}}
+.dot{position:relative;height:4px;width:44px;border-radius:9px;background:rgba(255,255,255,.15);overflow:hidden}
+.dot .fill{position:absolute;inset:0;width:0;background:#7ed957}
+.dot.done .fill{width:100%}
+.dot.is-active .fill{animation:fillbar 6.5s linear forwards}
+#stage:hover .dot.is-active .fill{animation-play-state:paused}
+@keyframes fillbar{to{width:100%}}
+
+/* ---------- Catálogo ---------- */
+.mcard{transition:opacity .5s,transform .5s,filter .5s}
+.mcard.hide{opacity:0;transform:scale(.9);filter:blur(6px);pointer-events:none;position:absolute;visibility:hidden}
+.tilt{transform-style:preserve-3d;transition:transform .25s ease-out}
+.spec{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(10px)}
+.model-name{background:linear-gradient(180deg,#c8ffb0,#7ed957 60%,#3c8f1f);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ---------- Barras comparativas ---------- */
+.bar>i{display:block;height:100%;width:0;border-radius:99px;transition:width 1.6s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,.3s)}
+.in .bar>i,.bar.in>i{width:var(--w)}
+.tl-line{transform:scaleX(0);transform-origin:left;transition:transform 1.8s cubic-bezier(.2,.8,.2,1)}
+.in .tl-line,.tl-line.in{transform:scaleX(1)}
+
+/* ---------- Mapa oscuro ---------- */
+.map-dark{filter:invert(92%) hue-rotate(180deg) saturate(.7) contrast(.92)}
+
+/* ---------- Botones ---------- */
+.btn-shine{position:relative;overflow:hidden}
+.btn-shine::before{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:shine 4s ease-in-out infinite}
+@keyframes shine{0%,60%{left:-120%}100%{left:160%}}
+.wa-float{animation:waPulse 2.4s infinite}
+@keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}70%{box-shadow:0 0 0 22px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.mag{transition:transform .25s ease-out}
+
+/* ---------- Header ---------- */
+#hdr{transition:background .4s,box-shadow .4s,height .4s}
+#hdr.scrolled{background:rgba(14,14,14,.85);backdrop-filter:blur(18px);box-shadow:0 1px 0 rgba(255,255,255,.05)}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv,.mask>span{opacity:1!important;transform:none!important}
+  .bar>i{width:var(--w)!important}.tl-line{transform:none!important}
+  .hs .bike,.hs .ghost,.hs .cap>*{opacity:1!important;transform:none!important}
+}
+</style></head>
+
+<body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen">
+<!-- Icono WhatsApp reutilizable -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg"><symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol></svg>
+
+<div id="progress"></div>
+<div id="cursorGlow" class="hidden md:block"></div>
+
+<!-- ===================== HEADER ===================== -->
+<header id="hdr" class="fixed top-0 left-0 right-0 z-50">
+  <div class="h-20 w-full px-5 md:px-margin flex items-center justify-between">
+    <a class="flex items-center gap-3 select-none" href="#inicio">
+      <img alt="E-MOVIL" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VhkUoeL6UK-GLHbQvudw1hMGv3pNz8OQSsI1g-_Vn-hbzRMb-zFfwEclxNkQ6PXA3ZqrzfkF37156x6jQcm4DwT8EqpnCMFX7_AannAPqW5RDNsAjqMV-SLeHFNIjA9xxmLgqyrQlKoOClWYvC9S09KmaRL1nOHKWP97fNeQqhomzTKfDNTs2qcuHS2nYfCnsLNa7nm6291O_9zSEee2gBOIYRqIr8SDy_QgkjO85oAq4ZRGgjokCiqPCgRFYEW8LSdDKz67xUreo"/>
+      <span class="font-headline-sm text-headline-sm tracking-tight"><span class="text-on-surface">E-</span><span class="text-primary">MOVIL</span></span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-8 font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant">
+      <a class="hover:text-primary transition-colors" href="#catalogo">Catálogo</a>
+      <a class="hover:text-primary transition-colors" href="#ahorro">Ahorro</a>
+      <a class="hover:text-primary transition-colors" href="#como-comprar">Cómo comprar</a>
+      <a class="hover:text-primary transition-colors" href="#test-drive">Prueba de manejo</a>
+      <a class="hover:text-primary transition-colors" href="#ubicacion">Ubicación</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <a class="mag btn-shine inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#25D366] text-[#052e16] font-headline-sm text-body-sm font-bold shadow-[0_0_24px_rgba(37,211,102,.35)] hover:shadow-[0_0_36px_rgba(37,211,102,.6)] transition-shadow" href="https://wa.me/59175171736?text=Hola%20E-MOVIL%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20las%20motos%20el%C3%A9ctricas." rel="noopener" target="_blank">
+        <svg class="w-5 h-5"><use href="#wa"/></svg><span class="hidden sm:inline">WhatsApp</span>
+      </a>
+      <button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center" aria-label="Menú" type="button"><span class="material-symbols-outlined">menu</span></button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden bg-surface-container-lowest/95 backdrop-blur-xl px-5 pb-6 pt-2 space-y-1 font-headline-sm">
+    <a class="block py-3 border-b border-white/5" href="#catalogo">Catálogo</a>
+    <a class="block py-3 border-b border-white/5" href="#ahorro">Ahorro</a>
+    <a class="block py-3 border-b border-white/5" href="#como-comprar">Cómo comprar</a>
+    <a class="block py-3 border-b border-white/5" href="#test-drive">Prueba de manejo</a>
+    <a class="block py-3" href="#ubicacion">Ubicación</a>
+  </div>
+</header>
+
+<a class="wa-float fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full bg-[#25D366] text-[#052e16] flex items-center justify-center hover:scale-110 transition-transform" href="https://wa.me/59175171736?text=Hola%20E-MOVIL%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n." rel="noopener" target="_blank" aria-label="Escribir por WhatsApp"><svg class="w-8 h-8"><use href="#wa"/></svg></a>
+
+<main class="w-full bg-surface overflow-x-hidden">
+
+<!-- ===================== HERO + SLIDER ===================== -->
+<section id="inicio" class="relative w-full min-h-screen pt-28 pb-6 flex flex-col bg-surface-container-lowest overflow-hidden grain">
+  <div class="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-primary/10 rounded-full blur-[140px]"></div>
+  <div class="pointer-events-none absolute bottom-0 right-0 w-[450px] h-[450px] bg-primary-container/10 rounded-full blur-[120px]"></div>
+  <div class="absolute inset-0 dots opacity-30 pointer-events-none" style="mask-image:radial-gradient(ellipse at center,#000 20%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at center,#000 20%,transparent 70%)"></div>
+  <div class="sphere hidden md:block w-28 h-28 left-[6%] top-[34%]" data-speed="-0.06"></div>
+  <div class="sphere dark hidden md:block w-20 h-20 right-[8%] top-[22%]" style="animation-delay:-3s" data-speed="0.08"></div>
+  <div class="sphere w-12 h-12 right-[20%] bottom-[22%]" style="animation-delay:-5s"></div>
+
+  <!-- Titular dividido -->
+  <div class="relative z-10 w-full px-5 md:px-margin grid grid-cols-1 md:grid-cols-12 items-end gap-2">
+    <div class="md:col-span-6">
+      <h1 class="font-display-xl text-[46px] sm:text-6xl lg:text-[104px] leading-[.95] tracking-tighter font-bold uppercase"><span class="mask"><span style="--d:.1s" id="h1a">El futuro</span></span></h1>
+    </div>
+    <div class="md:col-span-6 md:text-right">
+      <h1 class="font-display-xl text-[46px] sm:text-6xl lg:text-[104px] leading-[.95] tracking-tighter font-bold uppercase text-primary"><span class="mask"><span style="--d:.3s" id="h1b">se enciende.</span></span></h1>
+    </div>
+  </div>
+
+  <!-- Escenario del slider -->
+  <div id="stage" class="relative z-20 w-full max-w-7xl mx-auto px-4 mt-2 md:-mt-8 h-[400px] md:h-[500px] lg:h-[560px]">
+    <div class="absolute bottom-16 left-1/2 -translate-x-1/2 w-3/4 h-10 bg-primary/25 rounded-full blur-2xl"></div>
+
+    <!-- Slide 1 -->
+    <div class="hs is-active" data-i="0">
+      <div class="ghost">SPORT</div>
+      <div class="bike"><img data-bike="a" alt="E-MOVIL Aura Pro" class="w-full max-w-4xl max-h-[340px] md:max-h-[430px] lg:max-h-[470px] object-contain drop-shadow-[0_25px_40px_rgba(0,0,0,.9)]"/></div>
+      <div class="cap absolute bottom-0 left-4 md:left-8 max-w-[240px] md:max-w-xs">
+        <span class="inline-block px-3 py-1 rounded-full bg-primary/15 text-primary font-label-caps text-label-caps uppercase">Deportiva</span>
+        <h2 class="font-headline-md text-headline-md font-bold mt-1">Aura Pro</h2>
+        <p class="text-body-sm text-on-surface-variant hidden sm:block">Potencia que se siente desde el primer segundo.</p>
+      </div>
+    </div>
+    <!-- Slide 2 -->
+    <div class="hs" data-i="1">
+      <div class="ghost">CITY</div>
+      <div class="bike"><img data-bike="b" alt="E-MOVIL Volt X Street" class="w-full max-w-4xl max-h-[340px] md:max-h-[430px] lg:max-h-[470px] object-contain drop-shadow-[0_25px_40px_rgba(0,0,0,.9)]"/></div>
+      <div class="cap absolute bottom-0 left-4 md:left-8 max-w-[240px] md:max-w-xs">
+        <span class="inline-block px-3 py-1 rounded-full bg-primary/15 text-primary font-label-caps text-label-caps uppercase">Urbana</span>
+        <h2 class="font-headline-md text-headline-md font-bold mt-1">Volt X Street</h2>
+        <p class="text-body-sm text-on-surface-variant hidden sm:block">Para moverte por la ciudad sin gastar de más.</p>
+      </div>
+    </div>
+    <!-- Slide 3 -->
+    <div class="hs" data-i="2">
+      <div class="ghost">GT</div>
+      <div class="bike"><img data-bike="a" alt="E-MOVIL Nova GT" class="w-full max-w-4xl max-h-[340px] md:max-h-[430px] lg:max-h-[470px] object-contain drop-shadow-[0_25px_40px_rgba(0,0,0,.9)] scale-x-[-1]"/></div>
+      <div class="cap absolute bottom-0 left-4 md:left-8 max-w-[240px] md:max-w-xs">
+        <span class="inline-block px-3 py-1 rounded-full bg-primary/15 text-primary font-label-caps text-label-caps uppercase">Scooter</span>
+        <h2 class="font-headline-md text-headline-md font-bold mt-1">Nova GT</h2>
+        <p class="text-body-sm text-on-surface-variant hidden sm:block">Cómoda, fácil y lista para todos los días.</p>
+      </div>
+    </div>
+
+    <!-- Burbujas flotantes (simples, sin tecnicismos) -->
+    <div class="hidden lg:flex absolute top-[18%] left-[12%] z-30 items-center gap-2 px-4 py-2 rounded-full bg-surface-container/80 backdrop-blur-xl border border-white/10 animate-[floaty_6s_ease-in-out_infinite]"><span class="material-symbols-outlined text-primary text-[20px]">local_gas_station</span><span class="text-body-sm font-semibold">Cero gasolina</span></div>
+    <div class="hidden lg:flex absolute top-[30%] right-[8%] z-30 items-center gap-2 px-4 py-2 rounded-full bg-surface-container/80 backdrop-blur-xl border border-white/10 animate-[floaty_7s_ease-in-out_infinite]" style="animation-delay:-2s"><span class="material-symbols-outlined text-primary text-[20px]">volume_off</span><span class="text-body-sm font-semibold">Silenciosa</span></div>
+    <div class="hidden lg:flex absolute bottom-[22%] right-[16%] z-30 items-center gap-2 px-4 py-2 rounded-full bg-surface-container/80 backdrop-blur-xl border border-white/10 animate-[floaty_8s_ease-in-out_infinite]" style="animation-delay:-4s"><span class="material-symbols-outlined text-primary text-[20px]">bolt</span><span class="text-body-sm font-semibold">Se carga en casa</span></div>
+  </div>
+
+  <!-- Controles + CTAs -->
+  <div class="relative z-30 w-full px-5 md:px-margin mt-4 flex flex-col lg:flex-row items-center justify-between gap-5">
+    <div class="flex flex-wrap items-center justify-center gap-3">
+      <a class="mag btn-shine inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-primary text-on-primary font-headline-sm text-body-md font-bold shadow-[0_0_28px_rgba(126,217,87,.35)] hover:shadow-[0_0_44px_rgba(126,217,87,.6)] transition-shadow" href="#catalogo">Ver motos<span class="material-symbols-outlined text-[20px]">arrow_forward</span></a>
+      <a class="mag inline-flex items-center px-7 py-3.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md font-headline-sm text-body-md hover:bg-white/10 transition-colors" href="#test-drive">Agendar prueba de manejo</a>
+    </div>
+    <div class="flex items-center gap-4">
+      <button id="prev" class="w-11 h-11 rounded-full border border-white/15 flex items-center justify-center hover:bg-primary hover:text-on-primary hover:border-primary transition-all" aria-label="Anterior" type="button"><span class="material-symbols-outlined">arrow_back</span></button>
+      <div class="flex items-center gap-2" id="dots"><button class="dot is-active" aria-label="Moto 1" type="button"><i class="fill"></i></button><button class="dot" aria-label="Moto 2" type="button"><i class="fill"></i></button><button class="dot" aria-label="Moto 3" type="button"><i class="fill"></i></button></div>
+      <span class="font-telemetry-num text-body-sm text-on-surface-variant w-12 text-center"><b id="cur" class="text-on-surface">01</b> / 03</span>
+      <button id="next" class="w-11 h-11 rounded-full border border-white/15 flex items-center justify-center hover:bg-primary hover:text-on-primary hover:border-primary transition-all" aria-label="Siguiente" type="button"><span class="material-symbols-outlined">arrow_forward</span></button>
+    </div>
+  </div>
+
+  <!-- Marquee -->
+  <div class="relative z-10 w-full mt-8 py-3 bg-surface-container-low overflow-hidden whitespace-nowrap border-y border-white/5">
+    <div class="marquee font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
+      <div class="flex items-center gap-8 pr-8"><span>Silencio</span><span class="text-primary">✦</span><span>Potencia</span><span class="text-primary">✦</span><span>Ahorro</span><span class="text-primary">✦</span><span>Cero humo</span><span class="text-primary">✦</span><span>Libertad</span><span class="text-primary">✦</span><span>Cochabamba</span><span class="text-primary">✦</span></div>
+      <div class="flex items-center gap-8 pr-8" aria-hidden="true"><span>Silencio</span><span class="text-primary">✦</span><span>Potencia</span><span class="text-primary">✦</span><span>Ahorro</span><span class="text-primary">✦</span><span>Cero humo</span><span class="text-primary">✦</span><span>Libertad</span><span class="text-primary">✦</span><span>Cochabamba</span><span class="text-primary">✦</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECCIÓN 2: POR QUÉ ELÉCTRICA ===================== -->
+<section class="relative w-full py-28 px-5 md:px-margin bg-surface overflow-hidden">
+  <div class="absolute -left-10 top-10 font-display-xl text-[220px] md:text-[340px] font-bold text-outline select-none pointer-events-none" data-speed="0.07">E</div>
+  <div class="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+    <div class="lg:col-span-5 lg:sticky lg:top-32">
+      <h2 class="rv-h font-display-xl text-[40px] md:text-[60px] leading-[1.02] font-bold tracking-tight">
+        <span class="mask"><span style="--d:.0s">Moverte</span></span>
+        <span class="mask"><span style="--d:.12s">debería ser</span></span>
+        <span class="mask"><span style="--d:.24s" class="text-primary">fácil y barato.</span></span>
+      </h2>
+      <p class="rv mt-6 text-body-lg text-on-surface-variant max-w-md" style="--d:.3s">Una moto eléctrica es como una moto normal, pero sin gasolina, sin humo y sin tanto taller. Así de simple.</p>
+      <a href="#catalogo" class="rv mag mt-8 inline-flex items-center gap-2 px-6 py-3 rounded-full border border-primary/50 text-primary font-semibold hover:bg-primary hover:text-on-primary transition-colors" style="--d:.4s">Ver el catálogo<span class="material-symbols-outlined text-[20px]">arrow_forward</span></a>
+    </div>
+
+    <div class="lg:col-span-7 space-y-5">
+      <div class="rv from-right group relative p-7 md:p-9 rounded-[28px] bg-surface-container-low border border-white/5 hover:border-primary/40 transition-colors overflow-hidden" style="--d:.0s">
+        <div class="absolute -right-10 -top-10 w-44 h-44 rounded-full bg-primary/10 blur-3xl group-hover:bg-primary/25 transition-colors"></div>
+        <div class="relative flex items-start gap-6">
+          <div class="shrink-0 w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-transform"><span class="material-symbols-outlined text-[34px]">savings</span></div>
+          <div><h3 class="font-headline-md text-headline-md font-bold">Gastas mucho menos</h3><p class="mt-1 text-body-lg text-on-surface-variant">Cargar la batería cuesta mucho menos que llenar un tanque, todos los meses.</p></div>
+        </div>
+      </div>
+      <div class="rv from-right group relative p-7 md:p-9 rounded-[28px] bg-surface-container-low border border-white/5 hover:border-primary/40 transition-colors overflow-hidden md:ml-10" style="--d:.12s">
+        <div class="absolute -right-10 -top-10 w-44 h-44 rounded-full bg-primary/10 blur-3xl group-hover:bg-primary/25 transition-colors"></div>
+        <div class="relative flex items-start gap-6">
+          <div class="shrink-0 w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-transform"><span class="material-symbols-outlined text-[34px]">build_circle</span></div>
+          <div><h3 class="font-headline-md text-headline-md font-bold">Casi sin mantenimiento</h3><p class="mt-1 text-body-lg text-on-surface-variant">Sin cambios de aceite, sin filtros, sin bujías. Menos visitas al mecánico.</p></div>
+        </div>
+      </div>
+      <div class="rv from-right group relative p-7 md:p-9 rounded-[28px] bg-surface-container-low border border-white/5 hover:border-primary/40 transition-colors overflow-hidden" style="--d:.24s">
+        <div class="absolute -right-10 -top-10 w-44 h-44 rounded-full bg-primary/10 blur-3xl group-hover:bg-primary/25 transition-colors"></div>
+        <div class="relative flex items-start gap-6">
+          <div class="shrink-0 w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-transform"><span class="material-symbols-outlined text-[34px]">hearing_disabled</span></div>
+          <div><h3 class="font-headline-md text-headline-md font-bold">Silenciosa y fácil de manejar</h3><p class="mt-1 text-body-lg text-on-surface-variant">Aceleras y listo: sin cambios de marcha ni embrague. Ideal si recién empiezas.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CATÁLOGO (estilo ficha) ===================== -->
+<section id="catalogo" class="relative w-full py-28 px-5 md:px-margin bg-surface-container-lowest overflow-hidden grain">
+  <div class="absolute top-1/3 -right-40 w-[520px] h-[520px] rounded-full bg-primary/10 blur-[140px] pointer-events-none"></div>
+  <div class="sphere hidden lg:block w-24 h-24 right-[5%] top-24" style="animation-delay:-2s"></div>
+  <div class="relative max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      <div>
+        <h2 class="rv-h font-display-xl text-[40px] md:text-[64px] leading-none font-bold tracking-tight"><span class="mask"><span>Elige tu</span></span> <span class="mask"><span style="--d:.15s" class="text-primary">E-MOVIL</span></span></h2>
+        <p class="rv mt-4 text-body-lg text-on-surface-variant max-w-lg" style="--d:.25s">Cada modelo muestra lo esencial: qué tan rápida es, cuánta batería tiene y cuántos kilómetros recorre.</p>
+      </div>
+      <div id="filters" class="rv flex flex-wrap gap-2" style="--d:.3s">
+        <button data-f="all" class="fbtn px-5 py-2 rounded-full bg-primary text-on-primary font-label-caps text-label-caps uppercase font-bold shadow-[0_0_16px_rgba(126,217,87,.3)] transition-all" type="button">Todas</button>
+        <button data-f="Urbana" class="fbtn px-5 py-2 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps uppercase transition-all" type="button">Urbana</button>
+        <button data-f="Deportiva" class="fbtn px-5 py-2 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps uppercase transition-all" type="button">Deportiva</button>
+        <button data-f="Scooter" class="fbtn px-5 py-2 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps uppercase transition-all" type="button">Scooter</button>
+        <button data-f="Off-road" class="fbtn px-5 py-2 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps uppercase transition-all" type="button">Off-road</button>
+      </div>
+    </div>
+    <div id="grid" class="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" style="perspective:1200px"></div>
+    <p class="rv mt-8 text-center text-body-sm text-on-surface-variant" style="--d:.1s">¿No sabes cuál elegir? Escríbenos y te ayudamos a encontrar la ideal para ti.</p>
+  </div>
+</section>
+
+<!-- ===================== UN DISEÑO MODERNO QUE GASTA MENOS ===================== -->
+<section id="ahorro" class="relative w-full py-28 px-5 md:px-margin bg-surface overflow-hidden">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-3xl mb-14">
+      <h2 class="rv-h font-display-xl text-[38px] md:text-[62px] leading-[1.02] font-bold tracking-tight">
+        <span class="mask"><span>Un diseño moderno</span></span><br/>
+        <span class="mask"><span style="--d:.15s" class="text-primary">que gasta menos.</span></span>
+      </h2>
+      <p class="rv mt-5 text-body-lg text-on-surface-variant" style="--d:.3s">Menos gasto cada mes y la misma potencia que una moto de gasolina. Sin complicaciones.</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+      <!-- Moto con órbitas -->
+      <div class="rv zoom lg:col-span-7 relative rounded-[32px] bg-surface-container-lowest border border-white/5 overflow-hidden min-h-[420px] flex items-center justify-center">
+        <div class="absolute inset-0 dots opacity-20"></div>
+        <div class="absolute w-[380px] h-[380px] md:w-[520px] md:h-[520px] orbit"></div>
+        <div class="absolute w-[280px] h-[280px] md:w-[380px] md:h-[380px] orbit rev"></div>
+        <div class="absolute w-72 h-72 rounded-full bg-primary/20 blur-[90px]"></div>
+        <img data-bike="b" alt="Moto E-MOVIL" class="relative z-10 w-[88%] max-h-[360px] object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,.9)] hover:scale-105 transition-transform duration-700"/>
+        <div class="absolute top-5 left-5 z-20 flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container/80 backdrop-blur-xl border border-white/10"><span class="material-symbols-outlined text-primary text-[20px]">trending_down</span><span class="text-body-sm font-semibold">Gastas menos</span></div>
+        <div class="absolute bottom-5 right-5 z-20 flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container/80 backdrop-blur-xl border border-white/10"><span class="material-symbols-outlined text-primary text-[20px]">bolt</span><span class="text-body-sm font-semibold">Misma potencia</span></div>
+      </div>
+
+      <!-- Comparativa simple -->
+      <div class="lg:col-span-5 flex flex-col gap-6">
+        <div class="rv from-right rounded-[28px] bg-surface-container-low border border-white/5 p-7 flex-1" style="--d:.1s">
+          <div class="flex items-center gap-3 mb-5"><span class="material-symbols-outlined text-primary text-[28px]">payments</span><h3 class="font-headline-sm text-headline-sm font-bold">Lo que gastas cada mes</h3></div>
+          <div class="space-y-5">
+            <div><div class="flex justify-between text-body-sm mb-2"><span class="text-on-surface-variant">Moto a gasolina</span><span class="font-semibold">Alto</span></div><div class="bar h-3 rounded-full bg-white/5"><i style="--w:100%;--d:.4s;background:#6b6b6b"></i></div></div>
+            <div><div class="flex justify-between text-body-sm mb-2"><span class="text-on-surface-variant">E-MOVIL</span><span class="font-semibold text-primary">Bajo</span></div><div class="bar h-3 rounded-full bg-white/5"><i style="--w:28%;--d:.7s;background:linear-gradient(90deg,#3c8f1f,#7ed957);box-shadow:0 0 14px #7ed957"></i></div></div>
+          </div>
+        </div>
+        <div class="rv from-right rounded-[28px] bg-surface-container-low border border-white/5 p-7 flex-1" style="--d:.25s">
+          <div class="flex items-center gap-3 mb-5"><span class="material-symbols-outlined text-primary text-[28px]">speed</span><h3 class="font-headline-sm text-headline-sm font-bold">Potencia para tu día a día</h3></div>
+          <div class="space-y-5">
+            <div><div class="flex justify-between text-body-sm mb-2"><span class="text-on-surface-variant">Moto a gasolina</span><span class="font-semibold">Buena</span></div><div class="bar h-3 rounded-full bg-white/5"><i style="--w:85%;--d:.5s;background:#6b6b6b"></i></div></div>
+            <div><div class="flex justify-between text-body-sm mb-2"><span class="text-on-surface-variant">E-MOVIL</span><span class="font-semibold text-primary">Igual de buena</span></div><div class="bar h-3 rounded-full bg-white/5"><i style="--w:85%;--d:.8s;background:linear-gradient(90deg,#3c8f1f,#7ed957);box-shadow:0 0 14px #7ed957"></i></div></div>
+          </div>
+        </div>
+        <p class="text-[12px] text-on-surface-variant px-2">Comparación ilustrativa. Consulta con un asesor para ver tu caso.</p>
+      </div>
+    </div>
+
+    <!-- Así de simple -->
+    <div class="mt-14 relative grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="rv group flex items-center gap-5 p-6 rounded-[24px] bg-surface-container-low border border-white/5" style="--d:0s"><div class="w-14 h-14 shrink-0 rounded-full bg-primary text-on-primary flex items-center justify-center group-hover:rotate-12 transition-transform"><span class="material-symbols-outlined">power</span></div><div><h4 class="font-headline-sm font-bold">Enchúfala</h4><p class="text-body-sm text-on-surface-variant">Con un enchufe común de tu casa.</p></div></div>
+      <div class="rv group flex items-center gap-5 p-6 rounded-[24px] bg-surface-container-low border border-white/5" style="--d:.15s"><div class="w-14 h-14 shrink-0 rounded-full bg-primary text-on-primary flex items-center justify-center group-hover:rotate-12 transition-transform"><span class="material-symbols-outlined">battery_charging_full</span></div><div><h4 class="font-headline-sm font-bold">Cárgala</h4><p class="text-body-sm text-on-surface-variant">Como cargas tu celular, mientras duermes.</p></div></div>
+      <div class="rv group flex items-center gap-5 p-6 rounded-[24px] bg-surface-container-low border border-white/5" style="--d:.3s"><div class="w-14 h-14 shrink-0 rounded-full bg-primary text-on-primary flex items-center justify-center group-hover:rotate-12 transition-transform"><span class="material-symbols-outlined">two_wheeler</span></div><div><h4 class="font-headline-sm font-bold">Maneja</h4><p class="text-body-sm text-on-surface-variant">Y olvídate de las gasolineras.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EXPERIENCIA ===================== -->
+<section class="relative w-full min-h-[640px] flex items-center px-5 md:px-margin py-20 overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <img data-bike="night" alt="Piloto E-MOVIL cruzando la ciudad de noche" class="absolute inset-0 w-full h-[120%] object-cover object-center brightness-90" data-speed="0.08"/>
+    <div class="absolute inset-0 bg-gradient-to-r from-surface-container-lowest/90 via-surface-container-lowest/60 to-transparent"></div>
+  </div>
+  <div class="rv from-left relative z-10 max-w-xl p-8 md:p-10 rounded-[28px] bg-surface-container-lowest/75 backdrop-blur-2xl border border-white/10 shadow-2xl space-y-5">
+    <span class="material-symbols-outlined text-primary text-[44px]" style="font-variation-settings:'FILL' 1">format_quote</span>
+    <blockquote class="font-headline-md text-headline-md font-semibold tracking-tight leading-snug">La ciudad se disfruta distinto cuando no hay ruido ni humo.</blockquote>
+    <p class="text-body-md text-on-surface-variant">Muévete por Cochabamba de forma más tranquila, más moderna y mucho más económica.</p>
+    <a href="#test-drive" class="mag inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-on-primary font-bold">Probar una moto<span class="material-symbols-outlined text-[20px]">arrow_forward</span></a>
+  </div>
+</section>
+
+<!-- ===================== CÓMO COMPRAR ===================== -->
+<section id="como-comprar" class="relative w-full py-28 px-5 md:px-margin bg-surface overflow-hidden">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="rv-h font-display-xl text-[38px] md:text-[60px] leading-[1.02] font-bold tracking-tight mb-16"><span class="mask"><span>Comprar tu moto</span></span><br/><span class="mask"><span style="--d:.15s" class="text-primary">es muy sencillo.</span></span></h2>
+    <div class="relative rv-wrap">
+      <div class="hidden lg:block absolute top-[34px] left-[6%] right-[6%] h-[2px] bg-white/10"><div class="tl-line h-full bg-gradient-to-r from-primary to-primary-container shadow-[0_0_12px_#7ed957]"></div></div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="rv text-center lg:text-left" style="--d:0s"><div class="relative mx-auto lg:mx-0 w-[68px] h-[68px] rounded-full bg-surface-container-high border-2 border-primary flex items-center justify-center text-primary shadow-[0_0_24px_rgba(126,217,87,.35)]"><span class="material-symbols-outlined text-[30px]">two_wheeler</span></div><span class="block mt-5 font-display-xl text-[56px] font-bold text-outline-variant leading-none">01</span><h4 class="mt-2 font-headline-sm text-headline-sm font-bold">Elige tu moto</h4><p class="mt-2 text-body-sm text-on-surface-variant">Mira el catálogo o dinos qué necesitas y te recomendamos una.</p></div>
+        <div class="rv text-center lg:text-left" style="--d:.15s"><div class="relative mx-auto lg:mx-0 w-[68px] h-[68px] rounded-full bg-surface-container-high border-2 border-primary flex items-center justify-center text-primary shadow-[0_0_24px_rgba(126,217,87,.35)]"><span class="material-symbols-outlined text-[30px]">sports_score</span></div><span class="block mt-5 font-display-xl text-[56px] font-bold text-outline-variant leading-none">02</span><h4 class="mt-2 font-headline-sm text-headline-sm font-bold">Pruébala</h4><p class="mt-2 text-body-sm text-on-surface-variant">Agenda una prueba de manejo y siente la diferencia.</p></div>
+        <div class="rv text-center lg:text-left" style="--d:.3s"><div class="relative mx-auto lg:mx-0 w-[68px] h-[68px] rounded-full bg-surface-container-high border-2 border-primary flex items-center justify-center text-primary shadow-[0_0_24px_rgba(126,217,87,.35)]"><span class="material-symbols-outlined text-[30px]">account_balance_wallet</span></div><span class="block mt-5 font-display-xl text-[56px] font-bold text-outline-variant leading-none">03</span><h4 class="mt-2 font-headline-sm text-headline-sm font-bold">Elige cómo pagar</h4><p class="mt-2 text-body-sm text-on-surface-variant">Pregúntanos por las opciones de pago disponibles.</p></div>
+        <div class="rv text-center lg:text-left" style="--d:.45s"><div class="relative mx-auto lg:mx-0 w-[68px] h-[68px] rounded-full bg-surface-container-high border-2 border-primary flex items-center justify-center text-primary shadow-[0_0_24px_rgba(126,217,87,.35)]"><span class="material-symbols-outlined text-[30px]">verified_user</span></div><span class="block mt-5 font-display-xl text-[56px] font-bold text-outline-variant leading-none">04</span><h4 class="mt-2 font-headline-sm text-headline-sm font-bold">Recíbela con respaldo</h4><p class="mt-2 text-body-sm text-on-surface-variant">Te la entregamos lista y te acompañamos después de la compra.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRUEBA DE MANEJO ===================== -->
+<section class="relative w-full py-28 px-5 md:px-margin bg-inverse-surface text-inverse-on-surface overflow-hidden" id="test-drive">
+  <div class="absolute -right-24 -top-24 w-80 h-80 rounded-full bg-primary-container/40 blur-3xl"></div>
+  <div class="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-5 space-y-5">
+      <h2 class="rv-h font-display-xl text-[36px] md:text-[52px] leading-[1.05] font-bold tracking-tight"><span class="mask"><span>Pruébala</span></span> <span class="mask"><span style="--d:.12s">antes de</span></span> <span class="mask"><span style="--d:.24s">decidir.</span></span></h2>
+      <p class="rv text-body-lg text-secondary-container" style="--d:.2s">Una vuelta basta para notar la diferencia. Déjanos tus datos y te escribimos por WhatsApp para coordinar.</p>
+      <div class="rv space-y-3 pt-2" style="--d:.3s">
+        <div class="flex items-center gap-3 text-secondary-container"><span class="material-symbols-outlined text-inverse-primary">location_on</span><span>Av. Simón López y J. García, Cochabamba</span></div>
+        <div class="flex items-center gap-3 text-secondary-container"><span class="material-symbols-outlined text-inverse-primary">call</span><a href="tel:+59175171736" class="hover:underline">75171736</a></div>
+        <div class="flex items-center gap-3 text-secondary-container"><span class="material-symbols-outlined text-inverse-primary">verified</span><span>Sin compromiso de compra</span></div>
+      </div>
+    </div>
+    <div class="rv from-right lg:col-span-7 bg-surface-container-lowest text-on-surface p-7 md:p-10 rounded-[28px] shadow-2xl">
+      <form id="tdForm" class="space-y-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div class="space-y-1"><label class="font-label-caps text-label-caps uppercase text-on-surface-variant block" for="nm">Nombre</label><input id="nm" class="w-full px-5 py-3 rounded-full bg-surface-container text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:ring-2 focus:ring-primary transition-all" placeholder="Tu nombre" required type="text"/></div>
+          <div class="space-y-1"><label class="font-label-caps text-label-caps uppercase text-on-surface-variant block" for="ph">Teléfono</label><input id="ph" class="w-full px-5 py-3 rounded-full bg-surface-container text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:ring-2 focus:ring-primary transition-all" placeholder="7XXXXXXX" required type="tel"/></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div class="space-y-1"><label class="font-label-caps text-label-caps uppercase text-on-surface-variant block" for="md">Moto que te interesa</label><select id="md" class="w-full px-5 py-3 rounded-full bg-surface-container text-on-surface focus:outline-none focus:ring-2 focus:ring-primary"></select></div>
+          <div class="space-y-1"><label class="font-label-caps text-label-caps uppercase text-on-surface-variant block" for="dt">Fecha que prefieres</label><input id="dt" class="w-full px-5 py-3 rounded-full bg-surface-container text-on-surface focus:outline-none focus:ring-2 focus:ring-primary" type="date"/></div>
+        </div>
+        <button class="mag btn-shine w-full py-4 rounded-full bg-primary text-on-primary font-headline-sm text-body-md font-bold shadow-[0_0_24px_rgba(126,217,87,.35)] hover:shadow-[0_0_36px_rgba(126,217,87,.6)] transition-shadow inline-flex items-center justify-center gap-2" type="submit"><svg class="w-5 h-5"><use href="#wa"/></svg>Agendar por WhatsApp</button>
+        <p class="text-[12px] text-on-surface-variant text-center">Necesitas licencia de conducir vigente para la prueba.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== UBICACIÓN + MAPA ===================== -->
+<section id="ubicacion" class="relative w-full py-28 px-5 md:px-margin bg-surface-container-lowest overflow-hidden">
+  <div class="absolute -left-40 bottom-0 w-[480px] h-[480px] rounded-full bg-primary/10 blur-[140px]"></div>
+  <div class="relative max-w-7xl mx-auto">
+    <h2 class="rv-h font-display-xl text-[38px] md:text-[60px] leading-[1.02] font-bold tracking-tight mb-12"><span class="mask"><span>Visítanos en</span></span> <span class="mask"><span style="--d:.15s" class="text-primary">Cochabamba.</span></span></h2>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div class="rv from-left lg:col-span-4 rounded-[28px] bg-surface-container-low border border-white/5 p-8 flex flex-col gap-6">
+        <div class="flex items-start gap-4"><div class="w-12 h-12 shrink-0 rounded-full bg-primary/10 text-primary flex items-center justify-center"><span class="material-symbols-outlined">location_on</span></div><div><h4 class="font-headline-sm font-bold">Dirección</h4><p class="text-on-surface-variant">Av. Simón López y J. García<br/>Cochabamba, Bolivia</p></div></div>
+        <div class="flex items-start gap-4"><div class="w-12 h-12 shrink-0 rounded-full bg-primary/10 text-primary flex items-center justify-center"><span class="material-symbols-outlined">call</span></div><div><h4 class="font-headline-sm font-bold">Teléfono</h4><a href="tel:+59175171736" class="text-on-surface-variant hover:text-primary transition-colors">75171736</a></div></div>
+        <div class="mt-auto space-y-3">
+          <a class="mag btn-shine w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-full bg-[#25D366] text-[#052e16] font-bold" href="https://wa.me/59175171736?text=Hola%20E-MOVIL%2C%20quiero%20visitarlos." rel="noopener" target="_blank"><svg class="w-5 h-5"><use href="#wa"/></svg>Escribir por WhatsApp</a>
+          <a class="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-full border border-white/15 hover:border-primary hover:text-primary transition-colors font-semibold" href="https://www.google.com/maps/search/?api=1&query=Av.+Sim%C3%B3n+L%C3%B3pez+y+J.+Garc%C3%ADa%2C+Cochabamba%2C+Bolivia" rel="noopener" target="_blank"><span class="material-symbols-outlined text-[20px]">directions</span>Cómo llegar</a>
+        </div>
+      </div>
+      <div class="rv from-right lg:col-span-8 relative rounded-[28px] overflow-hidden border border-primary/30 shadow-[0_0_60px_rgba(126,217,87,.12)] min-h-[420px]">
+        <iframe title="Mapa E-MOVIL Cochabamba" class="map-dark absolute inset-0 w-full h-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Av.+Sim%C3%B3n+L%C3%B3pez+y+J.+Garc%C3%ADa,+Cochabamba,+Bolivia&amp;output=embed"></iframe>
+        <div class="pointer-events-none absolute inset-0 rounded-[28px] ring-1 ring-inset ring-white/10"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section class="relative w-full py-32 px-5 md:px-margin bg-surface overflow-hidden flex flex-col items-center justify-center text-center">
+  <div class="pointer-events-none absolute inset-0 flex items-center justify-center"><div class="w-[700px] h-[350px] bg-primary/15 rounded-full blur-[140px]"></div></div>
+  <div class="orbit pointer-events-none w-[620px] h-[620px] opacity-60"></div>
+  <div class="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 opacity-15 max-w-4xl w-full"><img data-bike="a" alt="" class="w-full h-auto object-contain grayscale"/></div>
+  <div class="relative z-10 max-w-3xl space-y-6">
+    <h2 class="rv-h font-display-xl text-[40px] md:text-[72px] leading-[1.02] font-bold tracking-tight"><span class="mask"><span>Tu próxima moto</span></span><br/><span class="mask"><span style="--d:.15s" class="text-primary">no hace ruido.</span></span></h2>
+    <p class="rv text-body-lg text-on-surface-variant max-w-xl mx-auto" style="--d:.3s">Hablemos por WhatsApp y encontramos la moto ideal para ti.</p>
+    <div class="rv flex flex-col sm:flex-row items-center justify-center gap-4 pt-4" style="--d:.4s">
+      <a class="mag btn-shine w-full sm:w-auto inline-flex items-center justify-center gap-2 px-9 py-4 rounded-full bg-[#25D366] text-[#052e16] font-bold shadow-[0_0_32px_rgba(37,211,102,.4)] hover:shadow-[0_0_50px_rgba(37,211,102,.7)] transition-shadow" href="https://wa.me/59175171736?text=Hola%20E-MOVIL%2C%20quiero%20reservar%20una%20moto." rel="noopener" target="_blank"><svg class="w-6 h-6"><use href="#wa"/></svg>Reservar por WhatsApp</a>
+      <a class="mag w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white/5 border border-white/10 font-semibold hover:bg-white/10 transition-colors" href="#catalogo">Ver catálogo</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="relative w-full bg-surface-container-lowest overflow-hidden pt-16 pb-8">
+  <div class="glow-line absolute top-0 left-0 right-0"></div>
+  <div class="pointer-events-none absolute bottom-[-40px] left-1/2 -translate-x-1/2 select-none opacity-[0.04] w-full text-center"><span class="font-display-xl text-[140px] md:text-[260px] lg:text-[340px] font-bold tracking-tighter leading-none block uppercase whitespace-nowrap">E-MOVIL</span></div>
+  <div class="relative z-10 w-full px-5 md:px-margin max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12">
+      <div class="space-y-4">
+        <div class="flex items-center gap-3"><img alt="E-MOVIL" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VhkUoeL6UK-GLHbQvudw1hMGv3pNz8OQSsI1g-_Vn-hbzRMb-zFfwEclxNkQ6PXA3ZqrzfkF37156x6jQcm4DwT8EqpnCMFX7_AannAPqW5RDNsAjqMV-SLeHFNIjA9xxmLgqyrQlKoOClWYvC9S09KmaRL1nOHKWP97fNeQqhomzTKfDNTs2qcuHS2nYfCnsLNa7nm6291O_9zSEee2gBOIYRqIr8SDy_QgkjO85oAq4ZRGgjokCiqPCgRFYEW8LSdDKz67xUreo"/><span class="font-headline-md text-headline-md font-bold"><span>E-</span><span class="text-primary">MOVIL</span></span></div>
+        <p class="text-body-md text-on-surface-variant max-w-sm">Motos eléctricas modernas que gastan menos y no pierden potencia.</p>
+      </div>
+      <div class="space-y-3 text-body-sm text-on-surface-variant">
+        <span class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface block">Navegación</span>
+        <a class="block hover:text-primary transition-colors" href="#catalogo">Catálogo</a><a class="block hover:text-primary transition-colors" href="#ahorro">Ahorro</a><a class="block hover:text-primary transition-colors" href="#como-comprar">Cómo comprar</a><a class="block hover:text-primary transition-colors" href="#test-drive">Prueba de manejo</a>
+      </div>
+      <div class="space-y-3 text-body-sm text-on-surface-variant">
+        <span class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface block">Contacto</span>
+        <p>Av. Simón López y J. García<br/>Cochabamba, Bolivia</p>
+        <a class="block hover:text-primary transition-colors" href="tel:+59175171736">75171736</a>
+        <a class="mag inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#25D366] text-[#052e16] font-bold" href="https://wa.me/59175171736" rel="noopener" target="_blank"><svg class="w-5 h-5"><use href="#wa"/></svg>WhatsApp</a>
+      </div>
+    </div>
+    <div class="pt-6 border-t border-white/5 text-body-sm text-on-surface-variant flex flex-col md:flex-row justify-between gap-2"><p>© 2026 E-MOVIL. Todos los derechos reservados.</p><p>Cochabamba, Bolivia</p></div>
+  </div>
+</footer>
+
+<script>
+/* ============ CONFIGURACIÓN FÁCIL ============ */
+// Cambia aquí las URLs de las imágenes (a = moto 1, b = moto 2, night = foto nocturna)
+const IMGS={
+  a:"https://lh3.googleusercontent.com/aida-public/AB6AXuD_0z-VY15fedXkYOqAUb-T3h6x06BxwvB6_I63ZcQOTELmLk-NO7ZKZohrNJh7tjMFIVaRWY_Ye-k0vLPkl0x1ej_68XrPp8NkpVXpHgYAZGSKMiZ4Hz3bUZH2Gvu7zlZTw3tGwgIjhD66YVIslJsP7Nd_nMFuKbuV73ZH35lofBpTQ-3zYpEOuhWE_UQ7oVLEhGwooRC7h28qxcTjbZfNa12_YiIcaF1zHybGHTXU3vLf55lQ3SKvFg",
+  b:"https://lh3.googleusercontent.com/aida-public/AB6AXuCv7UEfv8EqZpwiwDBrMTbSHKxtQLyfz2uPs0GWYig1ikMMuQsSr4asaBudt9_RG4aeZ95cRw70cgIX9_DeWHJGjs-h2G8hBLH4RWzJSyGzCHXiKRk1aJgPGbYSwMeZ84b4nLJj6KDcVXGGGX1nUySs_ruHQPKJT4INkQrJbBhvl6DrgayKDX8A9dsJXhMQggl3AAI_bVOvS2ArRJNvS5CSr87DDEZ-Fj2jIFOvPI5KvPsTai5x-tlkSQ",
+  night:"https://lh3.googleusercontent.com/aida-public/AB6AXuAcXD--6LeLEqXAcDMyE-mSb9KD5b2IqCiXprL2E8GJ9OXRc10JPtPo50NM5jlU5BaTmbZN5sBImjISs78KT53I1PUwEktz8ezqCYSOCZYMLXWXY-s6Cg44DmPk_2l7xYY7GeQE40iyjN7VNnvPCTlJuDAT8s8F9BjqNPy_eiEJiRexeJxMCmyz9sJ-KyHVGCQMTssQrIzgh1SWfha4ZJ4999ji5qSk9UjCj304or7xSOyNpAztOQxC8g"
+};
+const WA="59175171736";
+// Catálogo (datos de ejemplo: edítalos libremente)
+const MODELS=[
+ {n:"Aura Pro",  cat:"Deportiva",tag:"Hecha para impresionar",     img:"a",flip:false,price:"38.500",spd:"140 km/h",bat:"72V 40Ah",rng:"180 km"},
+ {n:"Volt X",    cat:"Urbana",   tag:"La ciudad a tu ritmo",       img:"b",flip:false,price:"24.900",spd:"95 km/h", bat:"72V 35Ah",rng:"120 km"},
+ {n:"Nova GT",   cat:"Scooter",  tag:"Comodidad todos los días",   img:"a",flip:true, price:"31.000",spd:"80 km/h", bat:"60V 30Ah",rng:"110 km"},
+ {n:"Titan",     cat:"Off-road", tag:"Sin camino, sin límites",    img:"b",flip:true, price:"29.500",spd:"90 km/h", bat:"72V 50Ah",rng:"140 km"},
+ {n:"Urban Lite",cat:"Scooter",  tag:"Fácil para empezar",         img:"b",flip:false,price:"15.900",spd:"45 km/h", bat:"48V 26Ah",rng:"75 km"},
+ {n:"Apex R",    cat:"Deportiva",tag:"Edición limitada",           img:"a",flip:false,price:"44.000",spd:"150 km/h",bat:"96V 50Ah",rng:"180 km"}
+];
+
+/* ============ IMÁGENES ============ */
+document.querySelectorAll('[data-bike]').forEach(i=>{i.src=IMGS[i.dataset.bike]});
+
+/* ============ CATÁLOGO ============ */
+const grid=document.getElementById('grid');
+const chip=(ic,l,v)=>`<div class="spec rounded-2xl px-2 py-3 text-center"><span class="material-symbols-outlined text-primary text-[20px]">${ic}</span><div class="text-[10px] text-on-surface-variant mt-0.5">${l}</div><div class="text-[12px] font-bold font-telemetry-num">${v}</div></div>`;
+grid.innerHTML=MODELS.map((m,i)=>`
+ <article class="mcard rv zoom" data-cat="${m.cat}" style="--d:${(i%3)*120}ms">
+  <div class="tilt relative h-full rounded-[28px] border border-primary/40 bg-surface-container-low p-6 flex flex-col overflow-hidden hover:border-primary hover:shadow-[0_0_40px_rgba(126,217,87,.25)] transition-[border-color,box-shadow] duration-300">
+   <div class="absolute inset-0 pointer-events-none select-none font-display-xl font-bold text-[78px] leading-[.85] text-white/[0.025] tracking-tighter p-2 overflow-hidden">E-MOVIL<br/>E-MOVIL<br/>E-MOVIL<br/>E-MOVIL<br/>E-MOVIL</div>
+   <div class="relative flex items-center justify-between"><span class="px-3 py-1 rounded-full bg-primary/15 text-primary font-label-caps text-label-caps uppercase">${m.cat}</span><span class="font-headline-sm text-[13px] font-bold tracking-tight">E-<span class="text-primary">MOVIL</span></span></div>
+   <div class="relative text-center mt-5"><h3 class="model-name font-display-xl text-[52px] leading-none font-bold tracking-tight">${m.n}</h3><p class="text-body-md text-on-surface-variant mt-1">${m.tag}</p></div>
+   <div class="relative flex-1 flex items-center justify-center my-4 min-h-[210px]">
+    <div class="absolute w-52 h-52 rounded-full bg-gradient-to-br from-primary/40 to-primary/5 blur-[2px]"></div>
+    <img src="${IMGS[m.img]}" alt="${m.n}" class="relative z-10 w-full max-h-[210px] object-contain drop-shadow-[0_18px_22px_rgba(0,0,0,.8)] hover:scale-110 transition-transform duration-500 ${m.flip?'scale-x-[-1] hover:!scale-x-[-1.1]':''}"/>
+   </div>
+   <div class="relative grid grid-cols-3 gap-2">${chip('speed','Vel. máx.',m.spd)}${chip('battery_charging_full','Batería',m.bat)}${chip('route','Autonomía',m.rng)}</div>
+   <div class="relative mt-5 flex items-center justify-between gap-3">
+    <div><div class="text-[11px] text-on-surface-variant">Desde</div><div class="font-display-xl text-[22px] font-bold text-primary leading-none">Bs. ${m.price}</div></div>
+    <a href="https://wa.me/${WA}?text=${encodeURIComponent('Hola E-MOVIL, me interesa la '+m.n+'.')}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-primary text-on-primary font-bold text-body-sm hover:scale-105 hover:shadow-[0_0_24px_rgba(126,217,87,.5)] transition-all">Me interesa<span class="material-symbols-outlined text-[18px]">arrow_forward</span></a>
+   </div>
+  </div>
+ </article>`).join('');
+
+/* Selector del formulario */
+const sel=document.getElementById('md');
+sel.innerHTML='<option value="">Aún no lo sé</option>'+MODELS.map(m=>`<option>${m.n} (${m.cat})</option>`).join('');
+
+/* Filtros */
+document.getElementById('filters').addEventListener('click',e=>{
+  const b=e.target.closest('.fbtn'); if(!b) return;
+  document.querySelectorAll('.fbtn').forEach(x=>{
+    const on=x===b;
+    x.className='fbtn px-5 py-2 rounded-full font-label-caps text-label-caps uppercase transition-all '+(on?'bg-primary text-on-primary font-bold shadow-[0_0_16px_rgba(126,217,87,.3)]':'bg-surface-container-high text-on-surface-variant hover:text-on-surface');
+  });
+  const f=b.dataset.f;
+  document.querySelectorAll('.mcard').forEach((c,i)=>{
+    const show=f==='all'||c.dataset.cat===f;
+    if(show){c.classList.remove('hide');c.classList.add('in');}else{c.classList.add('hide');}
+  });
+});
+
+/* ============ HERO SLIDER ============ */
+const slides=[...document.querySelectorAll('.hs')],dots=[...document.querySelectorAll('.dot')],cur=document.getElementById('cur');
+let idx=0,lock=false;
+function show(n){
+  n=(n+slides.length)%slides.length; if(n===idx||lock) return;
+  lock=true;
+  const old=slides[idx]; old.classList.remove('is-active'); old.classList.add('is-out');
+  setTimeout(()=>old.classList.remove('is-out'),1100);
+  slides[n].classList.add('is-active');
+  dots.forEach((d,i)=>{d.classList.remove('is-active','done'); void d.offsetWidth; if(i<n)d.classList.add('done'); if(i===n)d.classList.add('is-active');});
+  idx=n; cur.textContent='0'+(n+1);
+  setTimeout(()=>lock=false,700);
+}
+dots.forEach((d,i)=>{d.addEventListener('click',()=>show(i)); d.querySelector('.fill').addEventListener('animationend',()=>show(idx+1));});
+document.getElementById('next').onclick=()=>show(idx+1);
+document.getElementById('prev').onclick=()=>show(idx-1);
+let tx=0; const st=document.getElementById('stage');
+st.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+st.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx; if(Math.abs(d)>50) show(idx+(d<0?1:-1));});
+// Textos del titular: lo mostramos al cargar
+requestAnimationFrame(()=>document.querySelectorAll('#inicio .mask').forEach(m=>m.classList.add('in')));
+
+/* ============ REVELADO AL SCROLL ============ */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.15,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.rv,.rv-h,.rv-wrap').forEach(el=>io.observe(el));
+
+/* ============ HEADER, PROGRESO, PARALLAX ============ */
+const hdr=document.getElementById('hdr'),prog=document.getElementById('progress');
+const par=[...document.querySelectorAll('[data-speed]')];
+let tick=false;
+function onScroll(){
+  const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;
+  prog.style.width=(y/h*100)+'%';
+  hdr.classList.toggle('scrolled',y>30);
+  par.forEach(el=>{const r=el.parentElement.getBoundingClientRect(); if(r.bottom<-200||r.top>innerHeight+200) return;
+    const d=(r.top+r.height/2-innerHeight/2)*parseFloat(el.dataset.speed); el.style.translate='0 '+(-d)+'px';});
+  tick=false;
+}
+addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(onScroll);}},{passive:true});
+onScroll();
+
+/* ============ MENÚ MÓVIL ============ */
+const mm=document.getElementById('mobileMenu');
+document.getElementById('menuBtn').onclick=()=>mm.classList.toggle('hidden');
+mm.querySelectorAll('a').forEach(a=>a.onclick=()=>mm.classList.add('hidden'));
+
+/* ============ CURSOR GLOW, TILT, MAGNÉTICO ============ */
+const fine=matchMedia('(pointer:fine)').matches;
+if(fine){
+  const g=document.getElementById('cursorGlow'); let gx=0,gy=0,tx2=0,ty2=0;
+  addEventListener('mousemove',e=>{tx2=e.clientX;ty2=e.clientY;});
+  (function loop(){gx+=(tx2-gx)*.12;gy+=(ty2-gy)*.12;g.style.transform=`translate(${gx}px,${gy}px)`;requestAnimationFrame(loop);})();
+
+  document.addEventListener('mousemove',e=>{
+    const t=e.target.closest&&e.target.closest('.tilt');
+    document.querySelectorAll('.tilt').forEach(el=>{ if(el!==t) el.style.transform=''; });
+    if(t){const r=t.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+      t.style.transform=`rotateY(${x*9}deg) rotateX(${-y*9}deg) translateY(-6px)`;}
+  });
+  document.querySelectorAll('.mag').forEach(b=>{
+    b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.22}px,${(e.clientY-r.top-r.height/2)*.35}px)`;});
+    b.addEventListener('mouseleave',()=>b.style.transform='');
+  });
+}
+
+/* ============ FORMULARIO → WHATSAPP ============ */
+document.getElementById('tdForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const n=document.getElementById('nm').value,p=document.getElementById('ph').value,m=document.getElementById('md').value||'aún no lo sé',d=document.getElementById('dt').value||'por definir';
+  const msg=`Hola E-MOVIL, quiero agendar una prueba de manejo.\nNombre: ${n}\nTeléfono: ${p}\nModelo: ${m}\nFecha preferida: ${d}`;
+  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,'_blank');
+});
+</script>
+</body></html>

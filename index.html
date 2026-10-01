@@ -1,0 +1,1693 @@
+<!doctype html>
+<html class="dark" lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+      name="viewport"
+    />
+    <title>E-MOVIL | Motos Eléctricas en Cochabamba</title>
+    <meta
+      name="description"
+      content="Motos eléctricas modernas que gastan menos y tienen la misma potencia. Showroom oficial en Cochabamba."
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-tint": "#81dc5a",
+              "on-surface-variant": "#bfcab5",
+              "surface-container-highest": "#353534",
+              "on-primary-container": "#1d5d00",
+              "surface-variant": "#353534",
+              background: "#121212",
+              "primary-container": "#7ed957",
+              "inverse-surface": "#e5e2e1",
+              "surface-container-high": "#242424",
+              "surface-dim": "#121212",
+              "tertiary-container": "#46de73",
+              "on-background": "#e5e2e1",
+              "secondary-container": "#3d3d3c",
+              "inverse-primary": "#246d00",
+              tertiary: "#67fb8d",
+              outline: "#8a9481",
+              secondary: "#c8c6c5",
+              "on-primary": "#0c3000",
+              primary: "#7ed957",
+              "on-surface": "#f2f0ef",
+              surface: "#121212",
+              "outline-variant": "#384132",
+              "surface-container-lowest": "#0a0a0a",
+              "surface-container-low": "#181818",
+              "inverse-on-surface": "#262626",
+              "surface-bright": "#333333",
+              "surface-container": "#1d1d1d",
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+              lg: "1.75rem",
+              xl: "2.5rem",
+              full: "9999px",
+            },
+            fontFamily: {
+              "body-lg": ["Plus Jakarta Sans"],
+              "body-md": ["Plus Jakarta Sans"],
+              "headline-sm": ["Space Grotesk"],
+              "headline-md": ["Space Grotesk"],
+              "body-sm": ["Plus Jakarta Sans"],
+              "headline-lg": ["Space Grotesk"],
+              "display-xl": ["Space Grotesk"],
+              "label-caps": ["Space Grotesk"],
+              "telemetry-num": ["Space Grotesk"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+        -webkit-tap-highlight-color: transparent;
+      }
+      body {
+        overflow-x: hidden;
+        background-color: #121212;
+      }
+
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      #progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        width: 0;
+        background: linear-gradient(90deg, #3c8f1f, #7ed957, #c8ffb0);
+        z-index: 100;
+        box-shadow: 0 0 10px #7ed957;
+      }
+
+      .rv {
+        opacity: 0;
+        transform: translateY(32px);
+        transition:
+          opacity 0.75s cubic-bezier(0.2, 0.7, 0.2, 1),
+          transform 0.75s cubic-bezier(0.2, 0.7, 0.2, 1);
+        transition-delay: var(--d, 0ms);
+      }
+      .rv.from-left {
+        transform: translateX(-40px);
+      }
+      .rv.from-right {
+        transform: translateX(40px);
+      }
+      .rv.zoom {
+        transform: scale(0.94);
+      }
+      .rv.in {
+        opacity: 1;
+        transform: none;
+      }
+      .mask {
+        display: inline-block;
+        overflow: hidden;
+        vertical-align: bottom;
+        padding-bottom: 0.05em;
+      }
+      .mask > span {
+        display: inline-block;
+        transform: translateY(115%);
+        transition: transform 0.85s cubic-bezier(0.2, 0.8, 0.2, 1);
+        transition-delay: var(--d, 0ms);
+      }
+      .in .mask > span,
+      .mask.in > span {
+        transform: none;
+      }
+
+      .sphere {
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle at 30% 28%,
+          #d6ffbf 0%,
+          #5fc13a 28%,
+          #1f5c0e 62%,
+          #071a03 100%
+        );
+        box-shadow:
+          0 20px 40px rgba(0, 0, 0, 0.5),
+          0 0 40px rgba(126, 217, 87, 0.15);
+        animation: floaty 8s ease-in-out infinite;
+        pointer-events: none;
+      }
+      .sphere.dark {
+        background: radial-gradient(
+          circle at 30% 28%,
+          #444 0%,
+          #1a1a1a 55%,
+          #050505 100%
+        );
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      }
+      @keyframes floaty {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0);
+        }
+        50% {
+          transform: translateY(-16px) rotate(4deg);
+        }
+      }
+      .dots {
+        background-image: radial-gradient(
+          rgba(255, 255, 255, 0.08) 1px,
+          transparent 1px
+        );
+        background-size: 22px 22px;
+      }
+
+      .marquee {
+        display: flex;
+        width: max-content;
+        animation: marq 24s linear infinite;
+      }
+      @keyframes marq {
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      .hs {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+      .hs .ghost {
+        position: absolute;
+        left: 50%;
+        top: 38%;
+        transform: translate(-50%, -50%) scale(1.1);
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 800;
+        letter-spacing: -0.05em;
+        line-height: 1;
+        white-space: nowrap;
+        font-size: clamp(90px, 25vw, 280px);
+        color: rgba(255, 255, 255, 0.035);
+        opacity: 0;
+        transition: all 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .hs .bike {
+        position: absolute;
+        inset: 0 0 60px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transform: translateX(80px) scale(0.9);
+        transition:
+          transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1),
+          opacity 0.7s;
+      }
+      .hs .cap > * {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: all 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .hs.is-active {
+        pointer-events: auto;
+      }
+      .hs.is-active .ghost {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      .hs.is-active .bike {
+        opacity: 1;
+        transform: none;
+      }
+      .hs.is-active .cap > * {
+        opacity: 1;
+        transform: none;
+      }
+      .hs.is-active .cap > *:nth-child(1) {
+        transition-delay: 0.25s;
+      }
+      .hs.is-active .cap > *:nth-child(2) {
+        transition-delay: 0.4s;
+      }
+      .hs.is-active .cap > *:nth-child(3) {
+        transition-delay: 0.55s;
+      }
+      .hs.is-out .bike {
+        opacity: 0;
+        transform: translateX(-80px) scale(0.9);
+      }
+      .hs.is-out .ghost {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.92);
+      }
+
+      .dot {
+        position: relative;
+        height: 4px;
+        width: 32px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.15);
+        overflow: hidden;
+      }
+      .dot .fill {
+        position: absolute;
+        inset: 0;
+        width: 0;
+        background: #7ed957;
+      }
+      .dot.done .fill {
+        width: 100%;
+      }
+      .dot.is-active .fill {
+        animation: fillbar 6.5s linear forwards;
+      }
+      @keyframes fillbar {
+        to {
+          width: 100%;
+        }
+      }
+
+      .mcard {
+        transition:
+          opacity 0.4s,
+          transform 0.4s;
+      }
+      .mcard.hide {
+        display: none !important;
+      }
+      .spec {
+        background: rgba(255, 255, 255, 0.035);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(8px);
+      }
+      .model-name {
+        background: linear-gradient(180deg, #d6ffbf, #7ed957 65%, #3c8f1f);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .bar > i {
+        display: block;
+        height: 100%;
+        width: 0;
+        border-radius: 99px;
+        transition: width 1.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        transition-delay: var(--d, 0.2s);
+      }
+      .in .bar > i,
+      .bar.in > i {
+        width: var(--w);
+      }
+
+      .map-dark {
+        filter: invert(90%) hue-rotate(180deg) brightness(85%) contrast(110%);
+      }
+
+      .wa-float {
+        animation: waPulse 2.4s infinite;
+      }
+      @keyframes waPulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+        }
+        70% {
+          box-shadow: 0 0 0 16px rgba(37, 211, 102, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+        }
+      }
+
+      #hdr {
+        transition:
+          background 0.3s,
+          box-shadow 0.3s,
+          height 0.3s;
+      }
+      #hdr.scrolled {
+        background: rgba(14, 14, 14, 0.94);
+        backdrop-filter: blur(16px);
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary selection:text-on-primary min-h-screen"
+  >
+    <svg style="display: none" xmlns="http://www.w3.org/2000/svg">
+      <symbol id="wa" viewBox="0 0 24 24">
+        <path
+          fill="currentColor"
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+        />
+      </symbol>
+    </svg>
+
+    <div id="progress"></div>
+
+    <!-- ===================== HEADER ===================== -->
+    <header
+      id="hdr"
+      class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+    >
+      <div
+        class="h-20 md:h-24 w-full px-4 sm:px-6 md:px-12 flex items-center justify-between"
+      >
+        <a class="flex items-center gap-3 select-none" href="#inicio">
+          <!-- Logo Grande con mayor presencia visual -->
+          <img
+            alt="E-MOVIL"
+            class="h-11 sm:h-14 w-auto object-contain brightness-110 drop-shadow-md transition-transform active:scale-95"
+            src="logo.png"
+            onerror="
+              this.style.display = 'none';
+              document.getElementById('logoFallback').style.display =
+                'inline-block';
+            "
+          />
+          <span
+            id="logoFallback"
+            class="hidden font-headline-sm text-2xl md:text-3xl font-extrabold tracking-tight text-white"
+            >E-<span class="text-primary">MOVIL</span></span
+          >
+        </a>
+
+        <nav
+          class="hidden lg:flex items-center gap-8 font-label-caps text-xs uppercase tracking-wider text-on-surface-variant font-medium"
+        >
+          <a class="hover:text-primary transition-colors py-2" href="#catalogo"
+            >Catálogo</a
+          >
+          <a class="hover:text-primary transition-colors py-2" href="#ahorro"
+            >Ahorro</a
+          >
+          <a
+            class="hover:text-primary transition-colors py-2"
+            href="#como-comprar"
+            >Cómo comprar</a
+          >
+          <a
+            class="hover:text-primary transition-colors py-2"
+            href="#test-drive"
+            >Prueba de manejo</a
+          >
+          <a class="hover:text-primary transition-colors py-2" href="#ubicacion"
+            >Ubicación</a
+          >
+        </nav>
+
+        <div class="flex items-center gap-2.5">
+          <a
+            class="inline-flex items-center gap-1.5 px-3.5 sm:px-5 py-2.5 rounded-full bg-[#25D366] text-[#052e16] font-headline-sm text-xs sm:text-sm font-bold shadow-[0_0_20px_rgba(37,211,102,.3)] active:scale-95 transition-all"
+            href="https://wa.me/59175171736?text=Hola%20E-MOVIL%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20las%20motos%20el%C3%A9ctricas."
+            rel="noopener"
+            target="_blank"
+          >
+            <svg class="w-4 h-4"><use href="#wa" /></svg>
+            <span>WhatsApp</span>
+          </a>
+
+          <button
+            id="menuBtn"
+            class="lg:hidden w-11 h-11 rounded-full bg-surface-container-high border border-white/10 flex items-center justify-center text-white active:scale-90 transition-transform"
+            aria-label="Abrir menú"
+            type="button"
+          >
+            <span class="material-symbols-outlined text-[24px]">menu</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Menú Desplegable Móvil -->
+      <div
+        id="mobileMenu"
+        class="hidden lg:hidden bg-surface-container-lowest/98 backdrop-blur-2xl border-b border-white/10 px-5 pt-3 pb-6 space-y-1 font-headline-sm text-base shadow-2xl transition-all"
+      >
+        <a
+          class="block py-3 border-b border-white/5 text-gray-200 hover:text-primary transition-colors"
+          href="#catalogo"
+          >Catálogo de motos</a
+        >
+        <a
+          class="block py-3 border-b border-white/5 text-gray-200 hover:text-primary transition-colors"
+          href="#ahorro"
+          >Ahorro frente a gasolina</a
+        >
+        <a
+          class="block py-3 border-b border-white/5 text-gray-200 hover:text-primary transition-colors"
+          href="#como-comprar"
+          >Cómo comprar</a
+        >
+        <a
+          class="block py-3 border-b border-white/5 text-gray-200 hover:text-primary transition-colors"
+          href="#test-drive"
+          >Agendar Test Drive</a
+        >
+        <a
+          class="block py-3 text-gray-200 hover:text-primary transition-colors"
+          href="#ubicacion"
+          >Showroom Cochabamba</a
+        >
+      </div>
+    </header>
+
+    <!-- Botón Flotante Móvil -->
+    <a
+      class="wa-float fixed bottom-4 right-4 z-50 w-13 h-13 p-3 rounded-full bg-[#25D366] text-[#052e16] flex items-center justify-center shadow-lg active:scale-90 transition-transform"
+      href="https://wa.me/59175171736?text=Hola%20E-MOVIL%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n."
+      rel="noopener"
+      target="_blank"
+      aria-label="Escribir por WhatsApp"
+    >
+      <svg class="w-7 h-7"><use href="#wa" /></svg>
+    </a>
+
+    <main class="w-full bg-surface overflow-x-hidden">
+      <!-- ===================== HERO + SLIDER ===================== -->
+      <section
+        id="inicio"
+        class="relative w-full min-h-[92vh] sm:min-h-screen pt-28 sm:pt-32 pb-8 flex flex-col justify-between bg-surface-container-lowest overflow-hidden"
+      >
+        <div
+          class="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 w-[340px] sm:w-[700px] h-[350px] bg-primary/12 rounded-full blur-[100px]"
+        ></div>
+        <div class="absolute inset-0 dots opacity-30 pointer-events-none"></div>
+
+        <!-- Titular Adaptativo -->
+        <div
+          class="relative z-10 w-full px-4 sm:px-6 md:px-12 text-center md:text-left grid grid-cols-1 md:grid-cols-12 items-end gap-1"
+        >
+          <div class="md:col-span-6">
+            <h1
+              class="font-display-xl text-[40px] sm:text-6xl lg:text-[96px] leading-[0.98] tracking-tighter font-extrabold uppercase"
+            >
+              <span class="mask"
+                ><span style="--d: 0.1s" id="h1a">El futuro</span></span
+              >
+            </h1>
+          </div>
+          <div class="md:col-span-6 md:text-right">
+            <h1
+              class="font-display-xl text-[40px] sm:text-6xl lg:text-[96px] leading-[0.98] tracking-tighter font-extrabold uppercase text-primary"
+            >
+              <span class="mask"
+                ><span style="--d: 0.3s" id="h1b">se enciende.</span></span
+              >
+            </h1>
+          </div>
+        </div>
+
+        <!-- Escenario Slider -->
+        <div
+          id="stage"
+          class="relative z-20 w-full max-w-6xl mx-auto px-4 my-auto h-[310px] sm:h-[420px] md:h-[480px] flex items-center justify-center"
+        >
+          <div
+            class="absolute bottom-6 left-1/2 -translate-x-1/2 w-4/5 h-8 bg-primary/20 rounded-full blur-xl"
+          ></div>
+
+          <!-- Slide 1 -->
+          <div class="hs is-active" data-i="0">
+            <div class="ghost">SPORT</div>
+            <div class="bike">
+              <img
+                data-bike="sport"
+                alt="E-MOVIL Aura Pro"
+                class="w-full max-w-[290px] sm:max-w-xl md:max-w-2xl max-h-[220px] sm:max-h-[350px] object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.85)]"
+              />
+            </div>
+            <div
+              class="cap absolute bottom-0 left-2 sm:left-6 max-w-[200px] sm:max-w-xs text-left"
+            >
+              <span
+                class="inline-block px-2.5 py-0.5 rounded-full bg-primary/15 text-primary font-label-caps text-[10px] sm:text-xs uppercase font-bold tracking-wider"
+                >Deportiva</span
+              >
+              <h2
+                class="font-headline-md text-xl sm:text-2xl font-bold mt-0.5 text-white"
+              >
+                Aura Pro
+              </h2>
+              <p class="text-xs text-on-surface-variant hidden sm:block">
+                Aceleración inmediata y diseño imponente.
+              </p>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="hs" data-i="1">
+            <div class="ghost">CITY</div>
+            <div class="bike">
+              <img
+                data-bike="urban"
+                alt="E-MOVIL Volt X Street"
+                class="w-full max-w-[290px] sm:max-w-xl md:max-w-2xl max-h-[220px] sm:max-h-[350px] object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.85)]"
+              />
+            </div>
+            <div
+              class="cap absolute bottom-0 left-2 sm:left-6 max-w-[200px] sm:max-w-xs text-left"
+            >
+              <span
+                class="inline-block px-2.5 py-0.5 rounded-full bg-primary/15 text-primary font-label-caps text-[10px] sm:text-xs uppercase font-bold tracking-wider"
+                >Urbana</span
+              >
+              <h2
+                class="font-headline-md text-xl sm:text-2xl font-bold mt-0.5 text-white"
+              >
+                Volt X Street
+              </h2>
+              <p class="text-xs text-on-surface-variant hidden sm:block">
+                Para moverte por la ciudad sin gastar en gasolina.
+              </p>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="hs" data-i="2">
+            <div class="ghost">SCOOTER</div>
+            <div class="bike">
+              <img
+                data-bike="scooter"
+                alt="E-MOVIL Nova GT"
+                class="w-full max-w-[290px] sm:max-w-xl md:max-w-2xl max-h-[220px] sm:max-h-[350px] object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.85)]"
+              />
+            </div>
+            <div
+              class="cap absolute bottom-0 left-2 sm:left-6 max-w-[200px] sm:max-w-xs text-left"
+            >
+              <span
+                class="inline-block px-2.5 py-0.5 rounded-full bg-primary/15 text-primary font-label-caps text-[10px] sm:text-xs uppercase font-bold tracking-wider"
+                >Scooter</span
+              >
+              <h2
+                class="font-headline-md text-xl sm:text-2xl font-bold mt-0.5 text-white"
+              >
+                Nova GT
+              </h2>
+              <p class="text-xs text-on-surface-variant hidden sm:block">
+                Cómoda, práctica y lista para tu rutina diaria.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controles y Llamados a la Acción -->
+        <div
+          class="relative z-30 w-full px-4 sm:px-6 md:px-12 flex flex-col-reverse sm:flex-row items-center justify-between gap-4"
+        >
+          <div
+            class="flex flex-col sm:flex-row w-full sm:w-auto items-stretch sm:items-center gap-2.5"
+          >
+            <a
+              class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-primary text-on-primary font-headline-sm text-sm font-bold shadow-[0_0_24px_rgba(126,217,87,0.35)] active:scale-95 transition-all"
+              href="#catalogo"
+            >
+              Ver motos disponibles
+              <span class="material-symbols-outlined text-[18px]"
+                >arrow_forward</span
+              >
+            </a>
+            <a
+              class="inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-white/5 border border-white/10 text-white font-headline-sm text-sm font-semibold active:bg-white/10 transition-colors"
+              href="#test-drive"
+            >
+              Agendar prueba de manejo
+            </a>
+          </div>
+
+          <!-- Controles de navegación -->
+          <div class="flex items-center justify-center gap-3">
+            <button
+              id="prev"
+              class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white active:scale-90 transition-transform"
+              aria-label="Anterior"
+              type="button"
+            >
+              <span class="material-symbols-outlined text-[18px]"
+                >arrow_back</span
+              >
+            </button>
+            <div class="flex items-center gap-1.5" id="dots">
+              <button class="dot is-active" aria-label="Moto 1" type="button">
+                <i class="fill"></i>
+              </button>
+              <button class="dot" aria-label="Moto 2" type="button">
+                <i class="fill"></i>
+              </button>
+              <button class="dot" aria-label="Moto 3" type="button">
+                <i class="fill"></i>
+              </button>
+            </div>
+            <span
+              class="font-telemetry-num text-xs text-on-surface-variant w-10 text-center"
+              ><b id="cur" class="text-white">01</b>/03</span
+            >
+            <button
+              id="next"
+              class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white active:scale-90 transition-transform"
+              aria-label="Siguiente"
+              type="button"
+            >
+              <span class="material-symbols-outlined text-[18px]"
+                >arrow_forward</span
+              >
+            </button>
+          </div>
+        </div>
+
+        <!-- Marquee de Ventajas -->
+        <div
+          class="relative z-10 w-full mt-6 py-2.5 bg-surface-container-low overflow-hidden whitespace-nowrap border-y border-white/5"
+        >
+          <div
+            class="marquee font-label-caps text-[10px] sm:text-xs uppercase tracking-widest text-on-surface-variant"
+          >
+            <div class="flex items-center gap-6 pr-6">
+              <span>Cero Gasolina</span><span class="text-primary">✦</span>
+              <span>Torque Inmediato</span><span class="text-primary">✦</span>
+              <span>Ahorro Mensual</span><span class="text-primary">✦</span>
+              <span>Cero Humo</span><span class="text-primary">✦</span>
+              <span>Cochabamba</span><span class="text-primary">✦</span>
+            </div>
+            <div class="flex items-center gap-6 pr-6" aria-hidden="true">
+              <span>Cero Gasolina</span><span class="text-primary">✦</span>
+              <span>Torque Inmediato</span><span class="text-primary">✦</span>
+              <span>Ahorro Mensual</span><span class="text-primary">✦</span>
+              <span>Cero Humo</span><span class="text-primary">✦</span>
+              <span>Cochabamba</span><span class="text-primary">✦</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== SECCIÓN 2: BENEFICIOS ===================== -->
+      <section
+        class="relative w-full py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-surface overflow-hidden"
+      >
+        <div
+          class="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
+        >
+          <div class="lg:col-span-5">
+            <h2
+              class="rv-h font-display-xl text-3xl sm:text-5xl leading-tight font-bold tracking-tight"
+            >
+              <span class="mask"><span style="--d: 0s">Moverte</span></span>
+              <span class="mask"
+                ><span style="--d: 0.12s">debería ser</span></span
+              >
+              <span class="mask"
+                ><span style="--d: 0.24s" class="text-primary"
+                  >fácil y barato.</span
+                ></span
+              >
+            </h2>
+            <p
+              class="rv mt-4 text-sm sm:text-base text-on-surface-variant"
+              style="--d: 0.3s"
+            >
+              Sin filas en surtidores, sin cambios de aceite y sin mantenimiento
+              complicado.
+            </p>
+          </div>
+
+          <div class="lg:col-span-7 space-y-3.5">
+            <div
+              class="rv p-5 sm:p-6 rounded-2xl bg-surface-container-low border border-white/5 flex items-start gap-4"
+            >
+              <div
+                class="shrink-0 w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center"
+              >
+                <span class="material-symbols-outlined text-[26px]"
+                  >savings</span
+                >
+              </div>
+              <div>
+                <h3
+                  class="font-headline-sm text-base sm:text-lg font-bold text-white"
+                >
+                  Gastas mucho menos
+                </h3>
+                <p class="mt-1 text-xs sm:text-sm text-on-surface-variant">
+                  Una carga completa en casa cuesta una fracción de lo que
+                  gastas en tanque cada semana.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="rv p-5 sm:p-6 rounded-2xl bg-surface-container-low border border-white/5 flex items-start gap-4"
+            >
+              <div
+                class="shrink-0 w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center"
+              >
+                <span class="material-symbols-outlined text-[26px]"
+                  >build_circle</span
+                >
+              </div>
+              <div>
+                <h3
+                  class="font-headline-sm text-base sm:text-lg font-bold text-white"
+                >
+                  Casi sin mantenimiento
+                </h3>
+                <p class="mt-1 text-xs sm:text-sm text-on-surface-variant">
+                  Sin bujías, embragues ni filtros. Menos piezas mecánicas
+                  significan menos visitas al taller.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="rv p-5 sm:p-6 rounded-2xl bg-surface-container-low border border-white/5 flex items-start gap-4"
+            >
+              <div
+                class="shrink-0 w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center"
+              >
+                <span class="material-symbols-outlined text-[26px]"
+                  >volume_off</span
+                >
+              </div>
+              <div>
+                <h3
+                  class="font-headline-sm text-base sm:text-lg font-bold text-white"
+                >
+                  Suave y silenciosa
+                </h3>
+                <p class="mt-1 text-xs sm:text-sm text-on-surface-variant">
+                  Solo aceleras y frenas. Sin marchas ni tirones, ideal para el
+                  tráfico de la ciudad.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== CATÁLOGO ===================== -->
+      <section
+        id="catalogo"
+        class="relative w-full py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-surface-container-lowest overflow-hidden"
+      >
+        <div class="relative max-w-6xl mx-auto">
+          <div class="mb-8">
+            <h2
+              class="rv-h font-display-xl text-3xl sm:text-5xl font-bold tracking-tight"
+            >
+              <span class="mask"><span>Elige tu</span></span>
+              <span class="mask"
+                ><span style="--d: 0.15s" class="text-primary"
+                  >E-MOVIL</span
+                ></span
+              >
+            </h2>
+            <p class="rv mt-2 text-xs sm:text-sm text-on-surface-variant">
+              Fichas técnicas esenciales: velocidad punta, tipo de batería y
+              autonomía por carga.
+            </p>
+
+            <!-- Filtros con Scroll Horizontal Móvil -->
+            <div
+              id="filters"
+              class="rv flex items-center gap-2 overflow-x-auto no-scrollbar pt-5 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0"
+            >
+              <button
+                data-f="all"
+                class="fbtn shrink-0 px-4 py-2 rounded-full bg-primary text-on-primary font-label-caps text-xs uppercase font-bold shadow-md transition-all"
+                type="button"
+              >
+                Todas
+              </button>
+              <button
+                data-f="Urbana"
+                class="fbtn shrink-0 px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-caps text-xs uppercase font-semibold transition-all"
+                type="button"
+              >
+                Urbana
+              </button>
+              <button
+                data-f="Deportiva"
+                class="fbtn shrink-0 px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-caps text-xs uppercase font-semibold transition-all"
+                type="button"
+              >
+                Deportiva
+              </button>
+              <button
+                data-f="Scooter"
+                class="fbtn shrink-0 px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-caps text-xs uppercase font-semibold transition-all"
+                type="button"
+              >
+                Scooter
+              </button>
+              <button
+                data-f="Off-road"
+                class="fbtn shrink-0 px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-caps text-xs uppercase font-semibold transition-all"
+                type="button"
+              >
+                Off-road
+              </button>
+            </div>
+          </div>
+
+          <!-- Cuadrícula de Tarjetas -->
+          <div
+            id="grid"
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+          ></div>
+
+          <p class="rv mt-8 text-center text-xs text-on-surface-variant">
+            ¿Dudas sobre financiamiento o modelos? Escríbenos y te asesoramos al
+            instante.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===================== AHORRO & EFICIENCIA ===================== -->
+      <section
+        id="ahorro"
+        class="relative w-full py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-surface overflow-hidden"
+      >
+        <div class="max-w-6xl mx-auto">
+          <div class="max-w-2xl mb-10">
+            <h2
+              class="rv-h font-display-xl text-3xl sm:text-5xl font-bold tracking-tight"
+            >
+              <span class="mask"><span>Un diseño moderno</span></span
+              ><br />
+              <span class="mask"
+                ><span style="--d: 0.15s" class="text-primary"
+                  >que cuida tu bolsillo.</span
+                ></span
+              >
+            </h2>
+            <p class="rv mt-3 text-xs sm:text-sm text-on-surface-variant">
+              Compara el gasto mensual frente a una moto tradicional en
+              Cochabamba.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+            <!-- Tarjeta visual de moto -->
+            <div
+              class="rv lg:col-span-6 relative rounded-2xl bg-surface-container-lowest border border-white/5 p-6 flex flex-col items-center justify-center min-h-[260px] overflow-hidden"
+            >
+              <div
+                class="absolute w-44 h-44 rounded-full bg-primary/15 blur-3xl"
+              ></div>
+              <img
+                data-bike="urban"
+                alt="Moto E-MOVIL"
+                class="relative z-10 w-full max-w-[280px] sm:max-w-xs object-contain drop-shadow-xl"
+              />
+              <div
+                class="mt-4 flex items-center justify-between w-full text-xs font-semibold px-2"
+              >
+                <span class="text-primary flex items-center gap-1"
+                  ><span class="material-symbols-outlined text-[16px]"
+                    >bolt</span
+                  >
+                  Torquímetro directo</span
+                >
+                <span class="text-on-surface-variant">Carga a 220V</span>
+              </div>
+            </div>
+
+            <!-- Barras comparativas -->
+            <div class="lg:col-span-6 space-y-4">
+              <div
+                class="rv p-5 rounded-2xl bg-surface-container-low border border-white/5"
+              >
+                <div class="flex items-center gap-2 mb-4">
+                  <span
+                    class="material-symbols-outlined text-primary text-[22px]"
+                    >payments</span
+                  >
+                  <h3
+                    class="font-headline-sm text-sm sm:text-base font-bold text-white"
+                  >
+                    Gasto de combustible / recarga mensual
+                  </h3>
+                </div>
+                <div class="space-y-4 text-xs">
+                  <div>
+                    <div class="flex justify-between mb-1.5">
+                      <span class="text-on-surface-variant"
+                        >Moto a gasolina (promedio)</span
+                      ><span class="font-bold text-gray-300">~Bs. 450</span>
+                    </div>
+                    <div class="bar h-2.5 rounded-full bg-white/5">
+                      <i style="--w: 100%; --d: 0.2s; background: #555"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex justify-between mb-1.5">
+                      <span class="text-on-surface-variant"
+                        >E-MOVIL (Luz doméstica)</span
+                      ><span class="font-bold text-primary">~Bs. 60</span>
+                    </div>
+                    <div class="bar h-2.5 rounded-full bg-white/5">
+                      <i
+                        style="
+                          --w: 20%;
+                          --d: 0.5s;
+                          background: #7ed957;
+                          box-shadow: 0 0 10px #7ed957;
+                        "
+                      ></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="rv p-5 rounded-2xl bg-surface-container-low border border-white/5"
+              >
+                <div class="flex items-center gap-2 mb-4">
+                  <span
+                    class="material-symbols-outlined text-primary text-[22px]"
+                    >speed</span
+                  >
+                  <h3
+                    class="font-headline-sm text-sm sm:text-base font-bold text-white"
+                  >
+                    Respuesta en subidas de Cochabamba
+                  </h3>
+                </div>
+                <div class="space-y-4 text-xs">
+                  <div>
+                    <div class="flex justify-between mb-1.5">
+                      <span class="text-on-surface-variant"
+                        >Moto a gasolina</span
+                      ><span class="font-semibold text-gray-400"
+                        >Pierde fuerza en baja</span
+                      >
+                    </div>
+                    <div class="bar h-2.5 rounded-full bg-white/5">
+                      <i style="--w: 70%; --d: 0.3s; background: #555"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex justify-between mb-1.5">
+                      <span class="text-on-surface-variant"
+                        >E-MOVIL Eléctrica</span
+                      ><span class="font-bold text-primary"
+                        >Torque 100% inmediato</span
+                      >
+                    </div>
+                    <div class="bar h-2.5 rounded-full bg-white/5">
+                      <i
+                        style="
+                          --w: 95%;
+                          --d: 0.6s;
+                          background: #7ed957;
+                          box-shadow: 0 0 10px #7ed957;
+                        "
+                      ></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== EXPERIENCIA ===================== -->
+      <section
+        class="relative w-full min-h-[460px] flex items-center px-4 sm:px-6 md:px-12 py-16 overflow-hidden"
+      >
+        <div class="absolute inset-0 z-0">
+          <img
+            data-bike="night"
+            alt="Piloto E-MOVIL cruzando la ciudad de noche"
+            class="absolute inset-0 w-full h-full object-cover object-center brightness-60"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-surface via-surface/80 to-transparent"
+          ></div>
+        </div>
+        <div
+          class="rv relative z-10 max-w-lg p-6 sm:p-8 rounded-2xl bg-surface-container-lowest/85 backdrop-blur-xl border border-white/10 shadow-2xl space-y-4"
+        >
+          <span class="material-symbols-outlined text-primary text-[36px]"
+            >format_quote</span
+          >
+          <blockquote
+            class="font-headline-md text-lg sm:text-xl font-bold tracking-tight text-white leading-snug"
+          >
+            La ciudad se disfruta distinto cuando no hay ruido ni humo.
+          </blockquote>
+          <p class="text-xs sm:text-sm text-on-surface-variant">
+            Muévete por Cochabamba de forma más tranquila, ágil y económica con
+            el respaldo oficial de E-MOVIL.
+          </p>
+          <a
+            href="#test-drive"
+            class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-primary text-on-primary font-bold text-xs sm:text-sm active:scale-95 transition-transform"
+          >
+            Probar una moto
+            <span class="material-symbols-outlined text-[16px]"
+              >arrow_forward</span
+            >
+          </a>
+        </div>
+      </section>
+
+      <!-- ===================== CÓMO COMPRAR ===================== -->
+      <section
+        id="como-comprar"
+        class="relative w-full py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-surface overflow-hidden"
+      >
+        <div class="max-w-6xl mx-auto">
+          <h2
+            class="rv-h font-display-xl text-3xl sm:text-5xl font-bold tracking-tight mb-10 text-center sm:text-left"
+          >
+            <span class="mask"><span>Comprar tu moto</span></span
+            ><br />
+            <span class="mask"
+              ><span style="--d: 0.15s" class="text-primary"
+                >es muy sencillo.</span
+              ></span
+            >
+          </h2>
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
+          >
+            <div
+              class="rv p-5 rounded-2xl bg-surface-container-low border border-white/5"
+            >
+              <span
+                class="text-primary font-bold text-xs uppercase tracking-wider block mb-1"
+                >Paso 01</span
+              >
+              <h4 class="font-headline-sm text-base font-bold text-white">
+                Elige tu modelo
+              </h4>
+              <p class="mt-1 text-xs text-on-surface-variant">
+                Explora el catálogo o escríbenos para recomendarte la ideal para
+                tus rutas diarias.
+              </p>
+            </div>
+            <div
+              class="rv p-5 rounded-2xl bg-surface-container-low border border-white/5"
+            >
+              <span
+                class="text-primary font-bold text-xs uppercase tracking-wider block mb-1"
+                >Paso 02</span
+              >
+              <h4 class="font-headline-sm text-base font-bold text-white">
+                Haz la prueba
+              </h4>
+              <p class="mt-1 text-xs text-on-surface-variant">
+                Ven al showroom de la Av. Simón López y siente el torque en
+                persona sin compromiso.
+              </p>
+            </div>
+            <div
+              class="rv p-5 rounded-2xl bg-surface-container-low border border-white/5"
+            >
+              <span
+                class="text-primary font-bold text-xs uppercase tracking-wider block mb-1"
+                >Paso 03</span
+              >
+              <h4 class="font-headline-sm text-base font-bold text-white">
+                Facilidad de pago
+              </h4>
+              <p class="mt-1 text-xs text-on-surface-variant">
+                Pago al contado, transferencias bancarias directas y opciones de
+                financiamiento.
+              </p>
+            </div>
+            <div
+              class="rv p-5 rounded-2xl bg-surface-container-low border border-white/5"
+            >
+              <span
+                class="text-primary font-bold text-xs uppercase tracking-wider block mb-1"
+                >Paso 04</span
+              >
+              <h4 class="font-headline-sm text-base font-bold text-white">
+                Soporte y Garantía
+              </h4>
+              <p class="mt-1 text-xs text-on-surface-variant">
+                Te la llevas lista para rodar con respaldo de repuestos y
+                servicio técnico local.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== TEST DRIVE ===================== -->
+      <section
+        class="relative w-full py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-inverse-surface text-inverse-on-surface"
+        id="test-drive"
+      >
+        <div
+          class="relative max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+        >
+          <div class="lg:col-span-5 space-y-4">
+            <h2
+              class="rv-h font-display-xl text-3xl sm:text-5xl font-bold tracking-tight text-gray-900 leading-tight"
+            >
+              Pruébala antes de decidir.
+            </h2>
+            <p class="text-xs sm:text-sm text-gray-700">
+              Una vuelta basta para convencerte. Déjanos tus datos y coordinamos
+              tu turno de prueba por WhatsApp.
+            </p>
+            <div class="space-y-2 pt-2 text-xs text-gray-700">
+              <div class="flex items-center gap-2">
+                <span
+                  class="material-symbols-outlined text-[18px] text-green-700"
+                  >location_on</span
+                >
+                Av. Simón López y J. García
+              </div>
+              <div class="flex items-center gap-2">
+                <span
+                  class="material-symbols-outlined text-[18px] text-green-700"
+                  >call</span
+                >
+                75171736
+              </div>
+              <div class="flex items-center gap-2">
+                <span
+                  class="material-symbols-outlined text-[18px] text-green-700"
+                  >verified</span
+                >
+                Sin compromiso de compra
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="lg:col-span-7 bg-surface-container-lowest text-on-surface p-5 sm:p-8 rounded-2xl shadow-xl border border-white/5"
+          >
+            <form id="tdForm" class="space-y-4">
+              <div class="space-y-1">
+                <label
+                  class="text-[11px] font-bold uppercase text-on-surface-variant tracking-wider block"
+                  for="nm"
+                  >Nombre completo</label
+                >
+                <input
+                  id="nm"
+                  class="w-full px-4 py-3 rounded-xl bg-surface-container text-white placeholder:text-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                  placeholder="Ej. Juan Pérez"
+                  required
+                  type="text"
+                />
+              </div>
+              <div class="space-y-1">
+                <label
+                  class="text-[11px] font-bold uppercase text-on-surface-variant tracking-wider block"
+                  for="ph"
+                  >WhatsApp / Teléfono</label
+                >
+                <input
+                  id="ph"
+                  class="w-full px-4 py-3 rounded-xl bg-surface-container text-white placeholder:text-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                  placeholder="7XXXXXXX"
+                  required
+                  type="tel"
+                />
+              </div>
+              <div class="space-y-1">
+                <label
+                  class="text-[11px] font-bold uppercase text-on-surface-variant tracking-wider block"
+                  for="md"
+                  >Modelo de interés</label
+                >
+                <select
+                  id="md"
+                  class="w-full px-4 py-3 rounded-xl bg-surface-container text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                ></select>
+              </div>
+              <button
+                class="w-full py-3.5 rounded-full bg-primary text-on-primary font-bold text-sm shadow-md active:scale-98 transition-all inline-flex items-center justify-center gap-2"
+                type="submit"
+              >
+                <svg class="w-4 h-4"><use href="#wa" /></svg>
+                Agendar Test Drive por WhatsApp
+              </button>
+              <p class="text-[10px] text-center text-on-surface-variant">
+                Requerida cédula o licencia vigente para la prueba de manejo.
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== UBICACIÓN & MAPA ===================== -->
+      <section
+        id="ubicacion"
+        class="relative w-full py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-surface-container-lowest overflow-hidden"
+      >
+        <div class="relative max-w-6xl mx-auto">
+          <h2
+            class="rv-h font-display-xl text-3xl sm:text-5xl font-bold tracking-tight mb-8"
+          >
+            <span class="mask"><span>Visítanos en</span></span>
+            <span class="mask"
+              ><span style="--d: 0.15s" class="text-primary"
+                >Cochabamba.</span
+              ></span
+            >
+          </h2>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+            <div
+              class="rv lg:col-span-5 rounded-2xl bg-surface-container-low border border-white/5 p-6 flex flex-col justify-between gap-5"
+            >
+              <div class="space-y-4">
+                <div class="flex items-start gap-3">
+                  <div
+                    class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0"
+                  >
+                    <span class="material-symbols-outlined text-[20px]"
+                      >location_on</span
+                    >
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-sm text-white">
+                      Showroom Oficial
+                    </h4>
+                    <p class="text-xs text-on-surface-variant mt-0.5">
+                      Av. Simón López y J. García<br />Cochabamba, Bolivia
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div
+                    class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0"
+                  >
+                    <span class="material-symbols-outlined text-[20px]"
+                      >call</span
+                    >
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-sm text-white">
+                      Atención al Cliente
+                    </h4>
+                    <a
+                      href="tel:+59175171736"
+                      class="text-xs text-primary underline"
+                      >75171736</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="space-y-2.5 pt-2">
+                <a
+                  class="w-full inline-flex items-center justify-center gap-2 py-3 rounded-full bg-[#25D366] text-[#052e16] font-bold text-xs sm:text-sm active:scale-95 transition-transform"
+                  href="https://wa.me/59175171736?text=Hola%20E-MOVIL%2C%20quiero%20visitarlos."
+                  rel="noopener"
+                  target="_blank"
+                >
+                  <svg class="w-4 h-4"><use href="#wa" /></svg> Escribir por
+                  WhatsApp
+                </a>
+                <a
+                  class="w-full inline-flex items-center justify-center gap-1.5 py-3 rounded-full border border-white/15 text-white font-semibold text-xs sm:text-sm active:bg-white/5 transition-colors"
+                  href="https://maps.google.com/?q=Av.+Sim%C3%B3n+L%C3%B3pez+y+J.+Garc%C3%ADa,+Cochabamba,+Bolivia"
+                  rel="noopener"
+                  target="_blank"
+                >
+                  <span class="material-symbols-outlined text-[18px]"
+                    >directions</span
+                  >
+                  Abrir en Google Maps
+                </a>
+              </div>
+            </div>
+
+            <div
+              class="rv lg:col-span-7 relative rounded-2xl overflow-hidden border border-white/10 min-h-[280px] sm:min-h-[360px]"
+            >
+              <iframe
+                title="Mapa E-MOVIL Cochabamba"
+                class="map-dark absolute inset-0 w-full h-full border-0"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://maps.google.com/maps?q=-17.3712,-66.1725&amp;hl=es&amp;z=15&amp;output=embed"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== CTA FINAL ===================== -->
+      <section
+        class="relative w-full py-20 px-4 sm:px-6 md:px-12 bg-surface text-center overflow-hidden"
+      >
+        <div class="relative z-10 max-w-xl mx-auto space-y-4">
+          <h2
+            class="font-display-xl text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight"
+          >
+            Tu próxima moto <br /><span class="text-primary"
+              >no hace ruido.</span
+            >
+          </h2>
+          <p class="text-xs sm:text-sm text-on-surface-variant">
+            Pide asesoría personalizada y descubre el modelo que mejor se adapta
+            a tu presupuesto.
+          </p>
+          <div
+            class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3"
+          >
+            <a
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#25D366] text-[#052e16] font-bold text-sm shadow-[0_0_24px_rgba(37,211,102,0.35)] active:scale-95 transition-all"
+              href="https://wa.me/59175171736?text=Hola%20E-MOVIL%2C%20quiero%20reservar%20una%20moto."
+              rel="noopener"
+              target="_blank"
+            >
+              <svg class="w-5 h-5"><use href="#wa" /></svg>
+              Cotizar por WhatsApp
+            </a>
+            <a
+              class="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white/5 border border-white/10 text-white font-semibold text-sm active:bg-white/10 transition-colors"
+              href="#catalogo"
+            >
+              Ver catálogo completo
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer
+      class="relative w-full bg-surface-container-lowest border-t border-white/5 pt-12 pb-8 px-4 sm:px-6 md:px-12 text-xs text-on-surface-variant"
+    >
+      <div
+        class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left"
+      >
+        <div class="flex items-center gap-3">
+          <!-- Logo Footer Ampliado -->
+          <img
+            alt="E-MOVIL"
+            class="h-10 sm:h-12 w-auto object-contain brightness-110"
+            src="logo.png"
+            onerror="this.style.display = 'none'"
+          />
+          <span class="font-bold text-white text-sm">E-MOVIL Cochabamba</span>
+        </div>
+        <p>© 2026 E-MOVIL. Cochabamba, Bolivia.</p>
+        <p class="text-[11px] text-gray-500">
+          Demo desarrollada por Juan Pablo Zelada Salinas
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      /* ============ RECURSOS DE IMÁGENES ============ */
+      const IMGS = {
+        sport: "moto-sport.png",
+        urban: "moto-urban.png",
+        scooter: "moto-scooter.png",
+        offroad: "moto-offroad.png",
+        night:
+          "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1920&q=80",
+      };
+
+      const WA = "59175171736";
+
+      /* Catálogo de Modelos */
+      const MODELS = [
+        {
+          n: "Aura Pro",
+          cat: "Deportiva",
+          tag: "Potencia y velocidad punta",
+          img: "sport",
+          flip: false,
+          price: "38.500",
+          spd: "140 km/h",
+          bat: "72V 40Ah",
+          rng: "180 km",
+        },
+        {
+          n: "Volt X",
+          cat: "Urbana",
+          tag: "La ciudad a tu ritmo",
+          img: "urban",
+          flip: false,
+          price: "24.900",
+          spd: "95 km/h",
+          bat: "72V 35Ah",
+          rng: "120 km",
+        },
+        {
+          n: "Nova GT",
+          cat: "Scooter",
+          tag: "Comodidad todos los días",
+          img: "scooter",
+          flip: false,
+          price: "31.000",
+          spd: "80 km/h",
+          bat: "60V 30Ah",
+          rng: "110 km",
+        },
+        {
+          n: "Titan Cross",
+          cat: "Off-road",
+          tag: "Sin camino, sin límites",
+          img: "offroad",
+          flip: false,
+          price: "29.500",
+          spd: "90 km/h",
+          bat: "72V 50Ah",
+          rng: "140 km",
+        },
+        {
+          n: "Urban Lite",
+          cat: "Scooter",
+          tag: "Ágil y fácil de parquear",
+          img: "scooter",
+          flip: true,
+          price: "15.900",
+          spd: "45 km/h",
+          bat: "48V 26Ah",
+          rng: "75 km",
+        },
+        {
+          n: "Apex R",
+          cat: "Deportiva",
+          tag: "Edición limitada de alto torque",
+          img: "sport",
+          flip: true,
+          price: "44.000",
+          spd: "150 km/h",
+          bat: "96V 50Ah",
+          rng: "180 km",
+        },
+      ];
+
+      /* Cargar imágenes en los elementos */
+      document.querySelectorAll("[data-bike]").forEach((i) => {
+        if (IMGS[i.dataset.bike]) {
+          i.src = IMGS[i.dataset.bike];
+        }
+      });
+
+      /* Generar Catálogo con Tarjetas Móviles Compactas */
+      const grid = document.getElementById("grid");
+      const chip = (ic, l, v) =>
+        `<div class="spec rounded-xl p-2 text-center"><span class="material-symbols-outlined text-primary text-[17px]">${ic}</span><div class="text-[9px] text-on-surface-variant leading-none mt-0.5">${l}</div><div class="text-[11px] font-bold text-white mt-0.5">${v}</div></div>`;
+
+      grid.innerHTML = MODELS.map(
+        (m, i) => `
+  <article class="mcard rv zoom" data-cat="${m.cat}" style="--d:${(i % 3) * 80}ms">
+    <div class="relative h-full rounded-2xl border border-white/10 bg-surface-container-low p-4 sm:p-5 flex flex-col justify-between hover:border-primary/50 transition-colors">
+      <div>
+        <div class="flex items-center justify-between">
+          <span class="px-2.5 py-0.5 rounded-full bg-primary/15 text-primary text-[10px] font-bold uppercase tracking-wider">${m.cat}</span>
+          <span class="text-[11px] font-bold text-gray-400">E-<span class="text-primary">MOVIL</span></span>
+        </div>
+        <div class="text-center mt-3">
+          <h3 class="model-name font-display-xl text-2xl font-bold tracking-tight">${m.n}</h3>
+          <p class="text-[11px] text-on-surface-variant mt-0.5">${m.tag}</p>
+        </div>
+        <div class="relative flex items-center justify-center my-3 min-h-[160px]">
+          <div class="absolute w-36 h-36 rounded-full bg-primary/10 blur-xl"></div>
+          <img src="${IMGS[m.img]}" alt="${m.n}" class="relative z-10 w-full max-h-[150px] object-contain drop-shadow-md ${m.flip ? "scale-x-[-1]" : ""}"/>
+        </div>
+        <div class="grid grid-cols-3 gap-1.5 my-2">
+          ${chip("speed", "Velocidad", m.spd)}
+          ${chip("battery_charging_full", "Batería", m.bat)}
+          ${chip("route", "Autonomía", m.rng)}
+        </div>
+      </div>
+      <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between gap-2">
+        <div>
+          <div class="text-[10px] text-on-surface-variant leading-none">Precio</div>
+          <div class="text-base font-extrabold text-primary font-headline-sm">Bs. ${m.price}</div>
+        </div>
+        <a href="https://wa.me/${WA}?text=${encodeURIComponent("Hola E-MOVIL, me interesa la moto " + m.n + ".")}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-primary text-on-primary font-bold text-xs active:scale-95 transition-transform">
+          Me interesa
+          <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </article>`,
+      ).join("");
+
+      /* Selector de Test Drive */
+      const sel = document.getElementById("md");
+      sel.innerHTML =
+        '<option value="">Aún no lo sé (asesoría)</option>' +
+        MODELS.map((m) => `<option>${m.n} (${m.cat})</option>`).join("");
+
+      /* Filtrado */
+      document.getElementById("filters").addEventListener("click", (e) => {
+        const b = e.target.closest(".fbtn");
+        if (!b) return;
+        document.querySelectorAll(".fbtn").forEach((x) => {
+          const on = x === b;
+          x.className =
+            "fbtn shrink-0 px-4 py-2 rounded-full font-label-caps text-xs uppercase font-semibold transition-all " +
+            (on
+              ? "bg-primary text-on-primary font-bold shadow-md"
+              : "bg-surface-container-high text-on-surface-variant");
+        });
+        const f = b.dataset.f;
+        document.querySelectorAll(".mcard").forEach((c) => {
+          const show = f === "all" || c.dataset.cat === f;
+          if (show) {
+            c.classList.remove("hide");
+            c.classList.add("in");
+          } else {
+            c.classList.add("hide");
+          }
+        });
+      });
+
+      /* Hero Slider & Gestos Touch */
+      const slides = [...document.querySelectorAll(".hs")];
+      const dots = [...document.querySelectorAll(".dot")];
+      const cur = document.getElementById("cur");
+      let idx = 0;
+      let lock = false;
+
+      function show(n) {
+        n = (n + slides.length) % slides.length;
+        if (n === idx || lock) return;
+        lock = true;
+        const old = slides[idx];
+        old.classList.remove("is-active");
+        old.classList.add("is-out");
+        setTimeout(() => old.classList.remove("is-out"), 900);
+        slides[n].classList.add("is-active");
+        dots.forEach((d, i) => {
+          d.classList.remove("is-active", "done");
+          void d.offsetWidth;
+          if (i < n) d.classList.add("done");
+          if (i === n) d.classList.add("is-active");
+        });
+        idx = n;
+        cur.textContent = "0" + (n + 1);
+        setTimeout(() => (lock = false), 600);
+      }
+
+      dots.forEach((d, i) => {
+        d.addEventListener("click", () => show(i));
+        d.querySelector(".fill").addEventListener("animationend", () =>
+          show(idx + 1),
+        );
+      });
+      document.getElementById("next").onclick = () => show(idx + 1);
+      document.getElementById("prev").onclick = () => show(idx - 1);
+
+      let tx = 0;
+      const st = document.getElementById("stage");
+      st.addEventListener("touchstart", (e) => (tx = e.touches[0].clientX), {
+        passive: true,
+      });
+      st.addEventListener("touchend", (e) => {
+        const d = e.changedTouches[0].clientX - tx;
+        if (Math.abs(d) > 40) show(idx + (d < 0 ? 1 : -1));
+      });
+
+      requestAnimationFrame(() =>
+        document
+          .querySelectorAll("#inicio .mask")
+          .forEach((m) => m.classList.add("in")),
+      );
+
+      /* Revelado Scroll */
+      const io = new IntersectionObserver(
+        (es) => {
+          es.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("in");
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -4% 0px" },
+      );
+      document.querySelectorAll(".rv, .rv-h").forEach((el) => io.observe(el));
+
+      /* Scroll Header & Barra de Progreso */
+      const hdr = document.getElementById("hdr");
+      const prog = document.getElementById("progress");
+      window.addEventListener(
+        "scroll",
+        () => {
+          const y = scrollY;
+          const h = document.documentElement.scrollHeight - innerHeight;
+          prog.style.width = (y / h) * 100 + "%";
+          hdr.classList.toggle("scrolled", y > 20);
+        },
+        { passive: true },
+      );
+
+      /* Menú Móvil */
+      const mm = document.getElementById("mobileMenu");
+      document.getElementById("menuBtn").onclick = () =>
+        mm.classList.toggle("hidden");
+      mm.querySelectorAll("a").forEach(
+        (a) => (a.onclick = () => mm.classList.add("hidden")),
+      );
+
+      /* Envío Formulario WhatsApp */
+      document.getElementById("tdForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const n = document.getElementById("nm").value;
+        const p = document.getElementById("ph").value;
+        const m = document.getElementById("md").value || "Por definir";
+        const msg = `Hola E-MOVIL, quiero agendar una prueba de manejo.\nNombre: ${n}\nTeléfono: ${p}\nModelo: ${m}`;
+        window.open(
+          `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,
+          "_blank",
+        );
+      });
+    </script>
+  </body>
+</html>
